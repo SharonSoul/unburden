@@ -1,0 +1,6 @@
+{
+  "/page": "app/page.js",
+  "/resources/page": "app/resources/page.js",
+  "/coves/page": "app/coves/page.js",
+  "/coves/[slug]/page": "app/coves/[slug]/page.js"
+}

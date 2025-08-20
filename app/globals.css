@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-deep-navy text-mist;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-coral hover:bg-coral/90 text-white font-medium px-6 py-3 rounded-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-coral/50 focus:ring-offset-2 focus:ring-offset-deep-navy flex items-center justify-center space-x-2 whitespace-nowrap;
+  }
+  
+  .btn-secondary {
+    @apply bg-soft-slate hover:bg-soft-slate/80 text-mist font-medium px-6 py-3 rounded-md transition-all duration-200 border border-mist/20 hover:border-mist/40 focus:outline-none focus:ring-2 focus:ring-seafoam/50 focus:ring-offset-2 focus:ring-offset-deep-navy flex items-center justify-center space-x-2 whitespace-nowrap;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+  
+  .btn-icon {
+    @apply p-2;
+  }
+  
+  .card {
+    @apply bg-soft-slate rounded-lg shadow-card border border-mist/10 p-4 sm:p-6;
+  }
+  
+  /* Mobile-first responsive improvements */
+  @media (max-width: 640px) {
+    .btn-primary, .btn-secondary {
+      @apply text-sm px-4 py-2;
+    }
+    
+    .card {
+      @apply p-4;
+    }
+  }
+  
+  .input-field {
+    @apply bg-soft-slate border border-mist/20 rounded-md px-4 py-3 text-mist placeholder-mist/50 focus:outline-none focus:ring-2 focus:ring-seafoam/50 focus:border-seafoam transition-all duration-200;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-seafoam/50 focus:ring-offset-2 focus:ring-offset-deep-navy;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Responsive utilities */
+  .container-responsive {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-responsive {
+    @apply text-base sm:text-lg lg:text-xl;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-soft-slate;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-mist/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-mist/50;
+}
