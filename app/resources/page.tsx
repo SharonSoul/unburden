@@ -155,7 +155,7 @@ export default function ResourcesPage() {
               <div className="mt-6">
                 <h3 className="text-lg font-medium text-mist mb-3">24/7 Crisis Hotlines</h3>
                 <div className="grid md:grid-cols-2 gap-3">
-                  {currentResources.hotlines.map((hotline, index) => (
+                  {currentResources.hotlines.map((hotline: string, index: number) => (
                     <motion.div
                       key={hotline}
                       initial={{ opacity: 0, x: -20 }}
@@ -176,7 +176,7 @@ export default function ResourcesPage() {
               <div className="mt-6">
                 <h3 className="text-lg font-medium text-mist mb-3">Additional Resources</h3>
                 <div className="grid md:grid-cols-2 gap-3">
-                  {currentResources.resources.map((resource, index) => (
+                  {currentResources.resources.map((resource: string, index: number) => (
                     <motion.div
                       key={resource}
                       initial={{ opacity: 0, x: -20 }}
