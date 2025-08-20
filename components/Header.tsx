@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+
 export default function Header() {
   const [isQuickHideActive, setIsQuickHideActive] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
