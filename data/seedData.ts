@@ -1,4 +1,4 @@
-import { Circle } from '@/types'
+import { Circle, PromptChip, CrisisResource } from '@/types'
 
 export const seedCircles: Circle[] = [
   {
