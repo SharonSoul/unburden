@@ -91,16 +91,16 @@ export default function LandingPage() {
           <div className="shape-3d"></div>
         </div>
         
-        <div className="container-responsive max-w-7xl mx-auto">
+        <div className="container-responsive max-w-7xl mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-8 mt-20"
             >
-              <div className="space-y-6">
+              <div className="space-y-6 ">
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black leading-tight">
                   Say what's hard to say—
                   <br />
