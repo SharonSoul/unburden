@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Shield, 
   Phone, 
@@ -81,7 +81,7 @@ export default function ResourcesPage() {
     : articles.filter(article => article.category === selectedCategory)
 
   return (
-    <div className="min-h-screen bg-deep-navy">
+    <div className="min-h-screen bg-charcoal">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -91,12 +91,12 @@ export default function ResourcesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-8 sm:mb-12"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-mist mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
               Resources & Support
             </h1>
-            <p className="text-lg sm:text-xl text-mist/70 max-w-2xl mx-auto px-4">
+            <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">
               Crisis support, educational articles, and helpful resources for your recovery journey
             </p>
           </motion.div>
@@ -105,18 +105,18 @@ export default function ResourcesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12"
           >
-            <div className="card border-coral/20 bg-gradient-to-r from-coral/5 to-coral/10">
+            <div className="card border-orange/20 bg-gradient-to-r from-orange/5 to-orange/10">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-coral/20 rounded-full flex items-center justify-center">
-                    <AlertTriangle className="w-6 h-6 text-coral" />
+                  <div className="w-12 h-12 bg-orange/20 rounded-full flex items-center justify-center">
+                    <AlertTriangle className="w-6 h-6 text-orange" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-semibold text-mist">Get Urgent Help</h2>
-                    <p className="text-mist/70">Immediate support when you need it most</p>
+                    <h2 className="text-2xl font-bold text-white">Get Urgent Help</h2>
+                    <p className="text-off-white/80">Immediate support when you need it most</p>
                   </div>
                 </div>
                 
@@ -129,7 +129,7 @@ export default function ResourcesPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Region Selector */}
                 <div>
-                  <h3 className="text-lg font-medium text-mist mb-3">Select Your Region</h3>
+                  <h3 className="text-lg font-medium text-white mb-3">Select Your Region</h3>
                   <select
                     value={selectedRegion}
                     onChange={(e) => setSelectedRegion(e.target.value)}
@@ -144,8 +144,8 @@ export default function ResourcesPage() {
                 </div>
 
                 {/* Disclaimer */}
-                <div className="bg-mist/5 border border-mist/20 rounded-lg p-4">
-                  <p className="text-sm text-mist/70 leading-relaxed">
+                <div className="bg-dark-grey/50 rounded-lg p-4 border border-light-grey/20">
+                  <p className="text-sm text-off-white/80 leading-relaxed">
                     {currentResources.disclaimer}
                   </p>
                 </div>
@@ -153,7 +153,7 @@ export default function ResourcesPage() {
 
               {/* Hotlines */}
               <div className="mt-6">
-                <h3 className="text-lg font-medium text-mist mb-3">24/7 Crisis Hotlines</h3>
+                <h3 className="text-lg font-medium text-white mb-3">24/7 Crisis Hotlines</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {currentResources.hotlines.map((hotline: string, index: number) => (
                     <motion.div
@@ -161,32 +161,11 @@ export default function ResourcesPage() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="bg-mist/5 border border-mist/20 rounded-lg p-4 hover:bg-mist/10 transition-colors"
+                      className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4 hover:bg-dark-grey/70 transition-colors"
                     >
                       <div className="flex items-center space-x-3">
-                        <Phone className="w-5 h-5 text-coral" />
-                        <span className="font-medium text-mist">{hotline}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Additional Resources */}
-              <div className="mt-6">
-                <h3 className="text-lg font-medium text-mist mb-3">Additional Resources</h3>
-                <div className="grid md:grid-cols-2 gap-3">
-                  {currentResources.resources.map((resource: string, index: number) => (
-                    <motion.div
-                      key={resource}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 + index * 0.1 }}
-                      className="bg-mist/5 border border-mist/20 rounded-lg p-4 hover:bg-mist/10 transition-colors cursor-pointer"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-mist">{resource}</span>
-                        <ExternalLink className="w-4 h-4 text-mist/50" />
+                        <Phone className="w-5 h-5 text-orange" />
+                        <span className="font-medium text-white">{hotline}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -199,23 +178,23 @@ export default function ResourcesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-12"
           >
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <BookOpen className="w-8 h-8 text-seafoam" />
-                  <h2 className="text-2xl font-semibold text-mist">Educational Articles</h2>
+                  <BookOpen className="w-8 h-8 text-orange" />
+                  <h2 className="text-2xl font-bold text-white">Educational Articles</h2>
                 </div>
                 <button
                   onClick={() => toggleSection('articles')}
-                  className="text-mist/60 hover:text-mist transition-colors"
+                  className="text-off-white/60 hover:text-white transition-colors"
                 >
                   {expandedSections.has('articles') ? (
-                    <ChevronUp className="w-5 h-5" />
+                    <ChevronUp className="w-6 h-6" />
                   ) : (
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-6 h-6" />
                   )}
                 </button>
               </div>
@@ -233,10 +212,10 @@ export default function ResourcesPage() {
                       <button
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                           selectedCategory === category
-                            ? 'bg-seafoam text-white'
-                            : 'bg-mist/10 text-mist/70 hover:bg-mist/20 hover:text-mist'
+                            ? 'bg-orange text-white'
+                            : 'bg-dark-grey text-off-white/80 hover:bg-medium-grey hover:text-white border border-light-grey/30'
                         }`}
                       >
                         {category}
@@ -252,28 +231,28 @@ export default function ResourcesPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 }}
-                        className="bg-mist/5 border border-mist/20 rounded-lg p-4 hover:bg-mist/10 hover:border-mist/30 transition-all cursor-pointer group"
+                        className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4 hover:bg-dark-grey/70 hover:border-light-grey/30 transition-all cursor-pointer group"
                       >
                         <div className="mb-3">
-                          <span className="text-xs text-seafoam bg-seafoam/20 px-2 py-1 rounded-full">
+                          <span className="text-xs text-orange bg-orange/20 px-2 py-1 rounded-full">
                             {article.category}
                           </span>
                         </div>
                         
-                        <h3 className="text-lg font-semibold text-mist mb-2 group-hover:text-seafoam transition-colors">
+                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-orange transition-colors">
                           {article.title}
                         </h3>
                         
-                        <p className="text-mist/70 text-sm mb-4 leading-relaxed">
+                        <p className="text-off-white/80 text-sm mb-4 leading-relaxed">
                           {article.description}
                         </p>
                         
-                        <div className="flex items-center justify-between text-sm text-mist/50">
+                        <div className="flex items-center justify-between text-sm text-off-white/50">
                           <span className="flex items-center space-x-1">
                             <Clock className="w-3 h-3" />
                             <span>{article.readTime}</span>
                           </span>
-                          <ExternalLink className="w-4 h-4 group-hover:text-seafoam transition-colors" />
+                          <ExternalLink className="w-4 h-4 group-hover:text-orange transition-colors" />
                         </div>
                       </motion.div>
                     ))}
@@ -287,23 +266,23 @@ export default function ResourcesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-12"
           >
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <Users className="w-8 h-8 text-seafoam" />
-                  <h2 className="text-2xl font-semibold text-mist">Community Guidelines</h2>
+                  <Users className="w-8 h-8 text-orange" />
+                  <h2 className="text-2xl font-bold text-white">Community Guidelines</h2>
                 </div>
                 <button
                   onClick={() => toggleSection('guidelines')}
-                  className="text-mist/60 hover:text-mist transition-colors"
+                  className="text-off-white/60 hover:text-white transition-colors"
                 >
                   {expandedSections.has('guidelines') ? (
-                    <ChevronUp className="w-5 h-5" />
+                    <ChevronUp className="w-6 h-6" />
                   ) : (
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-6 h-6" />
                   )}
                 </button>
               </div>
@@ -313,52 +292,50 @@ export default function ResourcesPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="space-y-4"
+                  className="grid md:grid-cols-2 gap-6"
                 >
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h3 className="text-lg font-medium text-mist mb-3">What We Do</h3>
-                      <ul className="space-y-2 text-mist/70">
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-seafoam rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Provide peer support and understanding</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-seafoam rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Share personal experiences and stories</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-seafoam rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Offer encouragement and hope</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-seafoam rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Create a safe, judgment-free space</span>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-medium text-mist mb-3">What We Don't Do</h3>
-                      <ul className="space-y-2 text-mist/70">
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-coral rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Give medical or clinical advice</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-coral rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Diagnose or treat conditions</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-coral rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Enable harmful behaviors</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-coral rounded-full mt-2 flex-shrink-0"></div>
-                          <span>Judge or shame others</span>
-                        </li>
-                      </ul>
-                    </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-white mb-3">What We Do</h3>
+                    <ul className="space-y-2 text-off-white/80">
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Provide peer support and understanding</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Share personal experiences and stories</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Offer encouragement and hope</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Create a safe, judgment-free space</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-medium text-white mb-3">What We Don't Do</h3>
+                    <ul className="space-y-2 text-off-white/80">
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Give medical or clinical advice</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Diagnose or treat conditions</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Enable harmful behaviors</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <span>Judge or shame others</span>
+                      </li>
+                    </ul>
                   </div>
                 </motion.div>
               )}
@@ -369,22 +346,22 @@ export default function ResourcesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <Heart className="w-8 h-8 text-seafoam" />
-                  <h2 className="text-2xl font-semibold text-mist">Additional Support</h2>
+                  <Heart className="w-8 h-8 text-orange" />
+                  <h2 className="text-2xl font-bold text-white">Additional Support</h2>
                 </div>
                 <button
                   onClick={() => toggleSection('support')}
-                  className="text-mist/60 hover:text-mist transition-colors"
+                  className="text-off-white/60 hover:text-white transition-colors"
                 >
                   {expandedSections.has('support') ? (
-                    <ChevronUp className="w-5 h-5" />
+                    <ChevronUp className="w-6 h-6" />
                   ) : (
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-6 h-6" />
                   )}
                 </button>
               </div>
@@ -396,12 +373,12 @@ export default function ResourcesPage() {
                   exit={{ opacity: 0, height: 0 }}
                   className="grid md:grid-cols-2 gap-6"
                 >
-                  <div className="bg-mist/5 border border-mist/20 rounded-lg p-4">
-                    <h3 className="text-lg font-medium text-mist mb-3">Professional Help</h3>
-                    <p className="text-mist/70 text-sm mb-4">
+                  <div className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4">
+                    <h3 className="text-lg font-medium text-white mb-3">Professional Help</h3>
+                    <p className="text-off-white/80 text-sm mb-4">
                       While we provide peer support, professional help is often essential for recovery.
                     </p>
-                    <ul className="space-y-2 text-sm text-mist/70">
+                    <ul className="space-y-2 text-sm text-off-white/80">
                       <li>• Licensed therapists and counselors</li>
                       <li>• Addiction specialists</li>
                       <li>• Support groups (AA, NA, SMART Recovery)</li>
@@ -409,12 +386,12 @@ export default function ResourcesPage() {
                     </ul>
                   </div>
                   
-                  <div className="bg-mist/5 border border-mist/20 rounded-lg p-4">
-                    <h3 className="text-lg font-medium text-mist mb-3">Self-Care Resources</h3>
-                    <p className="text-mist/70 text-sm mb-4">
+                  <div className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4">
+                    <h3 className="text-lg font-medium text-white mb-3">Self-Care Resources</h3>
+                    <p className="text-off-white/80 text-sm mb-4">
                       Tools and practices to support your mental and emotional well-being.
                     </p>
-                    <ul className="space-y-2 text-sm text-mist/70">
+                    <ul className="space-y-2 text-sm text-off-white/80">
                       <li>• Meditation and mindfulness apps</li>
                       <li>• Exercise and movement resources</li>
                       <li>• Creative expression outlets</li>

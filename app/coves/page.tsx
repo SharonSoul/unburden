@@ -76,7 +76,7 @@ export default function CoveCirclesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-deep-navy">
+    <div className="min-h-screen bg-charcoal">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -88,10 +88,10 @@ export default function CoveCirclesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold text-mist mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
               Cove Circles
             </h1>
-            <p className="text-lg sm:text-xl text-mist/70 max-w-2xl mx-auto px-4">
+            <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">
               Find your supportive community. Browse topic-based spaces for addiction and recovery support.
             </p>
           </motion.div>
@@ -100,163 +100,130 @@ export default function CoveCirclesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8 sm:mb-12"
           >
-            <div className="bg-soft-slate rounded-lg p-6 border border-mist/10">
-              {/* Search Bar */}
-              <div className="relative mb-6">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-mist/50 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search circles by name or description..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="input-field w-full pl-10"
-                />
-              </div>
+            {/* Search Bar */}
+            <div className="relative mb-6">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-off-white/50 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search circles by name or description..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-dark-grey border border-light-grey/30 rounded-xl pl-12 pr-4 py-4 text-white placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-orange/50 focus:border-orange transition-all duration-300"
+              />
+            </div>
 
-              {/* Filters Row */}
-              <div className="flex flex-wrap items-center gap-4 mb-6">
-                <div className="flex items-center space-x-2">
-                  <Filter className="w-4 h-4 text-mist/60" />
-                  <span className="text-sm font-medium text-mist">Filters:</span>
-                </div>
-                
-                {/* Active Only Toggle */}
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={showActiveOnly}
-                    onChange={(e) => setShowActiveOnly(e.target.checked)}
-                    className="w-4 h-4 text-seafoam border-mist/30 rounded focus:ring-seafoam/50"
-                  />
-                  <span className="text-sm text-mist">Active now only</span>
-                </label>
-
-                {/* Sort Dropdown */}
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-mist/60">Sort by:</span>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
-                    className="input-field text-sm py-2 px-3"
-                  >
-                    <option value="name">Name</option>
-                    <option value="active">Most Active</option>
-                    <option value="mood">Mood</option>
-                  </select>
-                </div>
-
-                {/* Clear Filters */}
-                {(searchQuery || selectedTags.length > 0 || showActiveOnly) && (
-                  <button
-                    onClick={clearFilters}
-                    className="text-sm text-mist/60 hover:text-mist transition-colors underline"
-                  >
-                    Clear all filters
-                  </button>
-                )}
-              </div>
+            {/* Filters */}
+            <div className="flex flex-wrap items-center gap-4">
+              {/* Active Only Toggle */}
+              <button
+                onClick={() => setShowActiveOnly(!showActiveOnly)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-all duration-300 ${
+                  showActiveOnly
+                    ? 'bg-orange border-orange text-white'
+                    : 'bg-dark-grey border-light-grey/30 text-off-white/80 hover:border-light-grey/50'
+                }`}
+              >
+                <Activity className="w-4 h-4" />
+                <span>Active now only</span>
+              </button>
 
               {/* Tag Filters */}
-              <div>
-                <p className="text-sm font-medium text-mist mb-3">Filter by topics:</p>
-                <div className="flex flex-wrap gap-2">
-                  {allTags.map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => toggleTag(tag)}
-                      className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
-                        selectedTags.includes(tag)
-                          ? 'bg-seafoam text-white'
-                          : 'bg-mist/10 text-mist/70 hover:bg-mist/20 hover:text-mist'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-2">
+                {allTags.map(tag => (
+                  <button
+                    key={tag}
+                    onClick={() => toggleTag(tag)}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                      selectedTags.includes(tag)
+                        ? 'bg-orange text-white'
+                        : 'bg-dark-grey text-off-white/80 hover:bg-medium-grey hover:text-white border border-light-grey/30'
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
               </div>
+
+              {/* Sort Dropdown */}
+              <div className="relative">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as 'name' | 'active' | 'mood')}
+                  className="appearance-none bg-dark-grey border border-light-grey/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-orange/50 focus:border-orange transition-all duration-300 pr-10"
+                >
+                  <option value="name">Sort by Name</option>
+                  <option value="active">Sort by Activity</option>
+                  <option value="mood">Sort by Mood</option>
+                </select>
+                <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-off-white/50 w-4 h-4 pointer-events-none" />
+              </div>
+
+              {/* Clear Filters */}
+              {(searchQuery || selectedTags.length > 0 || showActiveOnly) && (
+                <button
+                  onClick={clearFilters}
+                  className="px-4 py-2 text-off-white/60 hover:text-white transition-colors text-sm"
+                >
+                  Clear Filters
+                </button>
+              )}
             </div>
           </motion.div>
 
-          {/* Results Summary */}
+          {/* Results Count */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-8"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-6"
           >
-            <div className="flex items-center justify-between">
-              <p className="text-mist/70">
-                Showing {filteredCircles.length} of {seedCircles.length} circles
-              </p>
-              
-              {/* Quick Stats */}
-              <div className="flex items-center space-x-6 text-sm text-mist/60">
-                <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4" />
-                  <span>{seedCircles.reduce((sum, circle) => sum + (circle.activeCount || 0), 0)} total active</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Activity className="w-4 h-4" />
-                  <span>{seedCircles.filter(c => c.isLive).length} live now</span>
-                </div>
-              </div>
-            </div>
+            <p className="text-off-white/60">
+              Showing {filteredCircles.length} of {seedCircles.length} circles
+            </p>
           </motion.div>
 
           {/* Circles Grid */}
-          {filteredCircles.length > 0 ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {filteredCircles.map((circle, index) => (
+              <motion.div
+                key={circle.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <CircleCard circle={circle} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* No Results */}
+          {filteredCircles.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+              className="text-center py-12"
             >
-              {filteredCircles.map((circle, index) => (
-                <CircleCard key={circle.id} circle={circle} index={index} />
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center py-16"
-            >
-              <div className="w-24 h-24 bg-mist/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-12 h-12 text-mist/40" />
+              <div className="w-16 h-16 bg-dark-grey rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="w-8 h-8 text-off-white/50" />
               </div>
-              <h3 className="text-xl font-semibold text-mist mb-2">No circles found</h3>
-              <p className="text-mist/70 mb-6">
+              <h3 className="text-xl font-semibold text-white mb-2">No circles found</h3>
+              <p className="text-off-white/70 mb-6">
                 Try adjusting your search or filters to find what you're looking for.
               </p>
               <button
                 onClick={clearFilters}
-                className="btn-secondary"
+                className="btn-primary"
               >
-                Clear all filters
+                Clear All Filters
               </button>
-            </motion.div>
-          )}
-
-          {/* Empty State (when no circles exist) */}
-          {seedCircles.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center py-16"
-            >
-              <div className="w-24 h-24 bg-mist/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="w-12 h-12 text-mist/40" />
-              </div>
-              <h3 className="text-xl font-semibold text-mist mb-2">It's quiet here</h3>
-              <p className="text-mist/70 mb-6">
-                Leave a note—someone will see it. Cove Circles are being set up.
-              </p>
             </motion.div>
           )}
         </div>

@@ -5,20 +5,31 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Unburden - Safe, Anonymous Peer Support',
-  description: 'Join topic-based Cove Circles for honest talk about addiction and recovery. You\'re in control of what you share and what you see.',
-  keywords: 'peer support, addiction recovery, anonymous support, mental health, community',
-  authors: [{ name: 'Unburden Team' }],
+  title: 'Unburden - Peer Support for Addiction Recovery',
+  description: 'A privacy-first, judgment-free space for honest talk about addiction and recovery. Join topic-based Cove Circles for peer support.',
+  keywords: 'addiction recovery, peer support, mental health, recovery community, addiction support, sobriety, mental wellness',
+  authors: [{ name: 'Unburden' }],
   openGraph: {
-    title: 'Unburden - Safe, Anonymous Peer Support',
-    description: 'Join topic-based Cove Circles for honest talk about addiction and recovery.',
-    type: 'website',
+    title: 'Unburden - Peer Support for Addiction Recovery',
+    description: 'A privacy-first, judgment-free space for honest talk about addiction and recovery. Join topic-based Cove Circles for peer support.',
+    url: 'https://unburden.com',
+    siteName: 'Unburden',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Unburden - Peer Support for Addiction Recovery',
+      },
+    ],
     locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Unburden - Safe, Anonymous Peer Support',
-    description: 'Join topic-based Cove Circles for honest talk about addiction and recovery.',
+    title: 'Unburden - Peer Support for Addiction Recovery',
+    description: 'A privacy-first, judgment-free space for honest talk about addiction and recovery. Join topic-based Cove Circles for peer support.',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -31,6 +42,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'your-google-verification-code',
+  },
 }
 
 export default function RootLayout({
@@ -39,10 +53,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
-        {children}
-      </body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

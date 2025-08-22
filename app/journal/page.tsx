@@ -147,7 +147,7 @@ export default function JournalPage() {
   }
 
   return (
-    <div className="min-h-screen bg-deep-navy">
+    <div className="min-h-screen bg-charcoal">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -157,12 +157,12 @@ export default function JournalPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-8 sm:mb-12"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-mist mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
               Your Journal
             </h1>
-            <p className="text-lg sm:text-xl text-mist/70 max-w-2xl mx-auto px-4">
+            <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">
               Private reflections, local-first notes, and your recovery journey
             </p>
           </motion.div>
@@ -171,16 +171,18 @@ export default function JournalPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-8"
           >
-            <div className="bg-mist/5 border border-mist/20 rounded-lg p-4">
-              <div className="flex items-center justify-between">
+            <div className="card border-orange/20 bg-gradient-to-r from-orange/5 to-orange/10">
+              <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <BookOpen className="w-5 h-5 text-seafoam" />
+                  <div className="w-12 h-12 bg-orange/20 rounded-full flex items-center justify-center">
+                    <BookOpen className="w-6 h-6 text-orange" />
+                  </div>
                   <div>
-                    <p className="font-medium text-mist">Want to keep your journal across devices?</p>
-                    <p className="text-sm text-mist/70">Create an account to sync your entries</p>
+                    <p className="font-medium text-white">Want to keep your journal across devices?</p>
+                    <p className="text-sm text-off-white/70">Create an account to sync your entries</p>
                   </div>
                 </div>
                 <button
@@ -197,14 +199,14 @@ export default function JournalPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-8"
           >
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               {/* Search and Filters */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 flex-1">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-mist/50 w-4 h-4" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-off-white/50 w-4 h-4" />
                   <input
                     type="text"
                     placeholder="Search your journal..."
@@ -253,11 +255,11 @@ export default function JournalPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-8"
           >
-            <h3 className="text-lg font-medium text-mist mb-4 flex items-center space-x-2">
-              <Lightbulb className="w-5 h-5 text-seafoam" />
+            <h3 className="text-lg font-medium text-white mb-4 flex items-center space-x-2">
+              <Lightbulb className="w-5 h-5 text-orange" />
               <span>Quick Prompts</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -268,7 +270,7 @@ export default function JournalPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.7 + index * 0.1 }}
                   onClick={() => usePrompt(prompt)}
-                  className="text-left p-3 bg-mist/5 border border-mist/20 rounded-lg hover:bg-mist/10 hover:border-mist/30 transition-all text-sm text-mist/80 hover:text-mist"
+                  className="text-left p-3 bg-dark-grey border border-light-grey/20 rounded-lg hover:bg-medium-grey hover:border-light-grey/30 transition-all text-sm text-off-white/80 hover:text-white"
                 >
                   {prompt}
                 </motion.button>
@@ -290,9 +292,9 @@ export default function JournalPage() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       {entry.title && (
-                        <h3 className="text-lg font-semibold text-mist mb-2">{entry.title}</h3>
+                        <h3 className="text-lg font-semibold text-white mb-2">{entry.title}</h3>
                       )}
-                      <p className="text-mist/80 whitespace-pre-wrap leading-relaxed">
+                      <p className="text-off-white/80 whitespace-pre-wrap leading-relaxed">
                         {entry.body}
                       </p>
                     </div>
@@ -301,14 +303,14 @@ export default function JournalPage() {
                     <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={() => setEditingEntry(entry)}
-                        className="p-2 text-mist/60 hover:text-mist hover:bg-mist/10 rounded transition-colors"
+                        className="p-2 text-off-white/60 hover:text-white hover:bg-dark-grey/50 rounded transition-colors"
                         title="Edit entry"
                       >
                         <Edit3 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => deleteEntry(entry.id)}
-                        className="p-2 text-mist/60 hover:text-coral hover:bg-coral/10 rounded transition-colors"
+                        className="p-2 text-off-white/60 hover:text-orange hover:bg-orange/10 rounded transition-colors"
                         title="Delete entry"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -316,7 +318,7 @@ export default function JournalPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between text-sm text-mist/50">
+                  <div className="flex items-center justify-between text-sm text-off-white/50">
                     <div className="flex items-center space-x-2">
                       <Clock className="w-4 h-4" />
                       <span>{formatDate(entry.createdAt)}</span>
@@ -338,9 +340,9 @@ export default function JournalPage() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="text-center py-16"
               >
-                <BookOpen className="w-24 h-24 text-mist/30 mx-auto mb-6" />
-                <h3 className="text-xl font-semibold text-mist mb-2">It's quiet here</h3>
-                <p className="text-mist/70 mb-6">
+                <BookOpen className="w-24 h-24 text-off-white/30 mx-auto mb-6" />
+                <h3 className="text-xl font-semibold text-white mb-2">It's quiet here</h3>
+                <p className="text-off-white/70 mb-6">
                   {entries.length === 0 
                     ? "Start your journaling journey with your first entry."
                     : "No entries match your current search or filters."
@@ -373,23 +375,23 @@ export default function JournalPage() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-soft-slate rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-dark-grey rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-light-grey/20"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-6">
+              <div className="p-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-mist">New Journal Entry</h2>
+                  <h2 className="text-2xl font-bold text-white">New Journal Entry</h2>
                   <button
                     onClick={() => setShowNewEntry(false)}
-                    className="text-mist/60 hover:text-mist transition-colors"
+                    className="text-off-white/60 hover:text-white transition-colors"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-mist mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                       Title (optional)
                     </label>
                     <input
@@ -402,7 +404,7 @@ export default function JournalPage() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-mist mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                       Entry
                     </label>
                     <textarea
@@ -415,7 +417,7 @@ export default function JournalPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-end space-x-3 mt-6">
+                <div className="flex items-center justify-end space-x-3 mt-8">
                   <button
                     onClick={() => setShowNewEntry(false)}
                     className="btn-secondary"
@@ -451,23 +453,23 @@ export default function JournalPage() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-soft-slate rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-dark-grey rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-light-grey/20"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-6">
+              <div className="p-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-mist">Edit Entry</h2>
+                  <h2 className="text-2xl font-bold text-white">Edit Entry</h2>
                   <button
                     onClick={() => setEditingEntry(null)}
-                    className="text-mist/60 hover:text-mist transition-colors"
+                    className="text-off-white/60 hover:text-white transition-colors"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-mist mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                       Title (optional)
                     </label>
                     <input
@@ -480,7 +482,7 @@ export default function JournalPage() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-mist mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                       Entry
                     </label>
                     <textarea
@@ -493,7 +495,7 @@ export default function JournalPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-end space-x-3 mt-6">
+                <div className="flex items-center justify-end space-x-3 mt-8">
                   <button
                     onClick={() => setEditingEntry(null)}
                     className="btn-secondary"
@@ -529,13 +531,13 @@ export default function JournalPage() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-soft-slate rounded-lg max-w-md w-full"
+              className="bg-dark-grey rounded-xl max-w-md w-full border border-light-grey/20"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-6 text-center">
-                <BookOpen className="w-16 h-16 text-seafoam mx-auto mb-4" />
-                <h2 className="text-xl font-semibold text-mist mb-4">Sync Your Journal</h2>
-                <p className="text-mist/70 mb-6">
+              <div className="p-8 text-center">
+                <BookOpen className="w-16 h-16 text-orange mx-auto mb-6" />
+                <h2 className="text-2xl font-bold text-white mb-4">Sync Your Journal</h2>
+                <p className="text-off-white/80 mb-6">
                   Create an account to sync your journal entries across devices and never lose your progress.
                 </p>
                 <div className="space-y-3">
