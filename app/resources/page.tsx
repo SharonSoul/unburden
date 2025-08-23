@@ -93,7 +93,7 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mt-20 mb-12 sm:mb-16"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl font-heroFont2 lg:text-6xl font-black text-white mb-6">
               Resources & Support
             </h1>
             <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">

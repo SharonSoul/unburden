@@ -162,7 +162,7 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Right Content (top layer) */}
+            {/* Right Content (top layer) - FIXED VERSION */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -179,20 +179,27 @@ export default function LandingPage() {
                 ></div>
               </div>
 
-              {/* Main Hero Image - FIXED VERSION */}
+              {/* Main Hero Image - Use regular img tag instead of Next.js Image */}
               <div className="relative z-20 w-full max-w-2xl">
-                <Image
+                <img
                   src="/images/monk.png"
                   alt="Hero Illustration"
-                  width={800}
-                  height={800}
                   className="w-full h-auto vanish-text"
-                  priority
-                  quality={90}
                   onError={(e) => {
-                    console.error('Image failed to load:', e);
-                    // Fallback - you can set a default image or hide the image
+                    console.error('Hero image failed to load');
+                    // Show a styled placeholder instead
                     e.currentTarget.style.display = 'none';
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'w-full h-96 bg-gradient-to-br from-[#b93900]/20 to-[#b93900]/10 rounded-2xl flex items-center justify-center border-2 border-[#b93900]/30';
+                    placeholder.innerHTML = `
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-[#b93900]/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🧘</span>
+                  </div>
+                  <p class="text-white/60">Hero Image</p>
+                </div>
+              `;
+                   
                   }}
                 />
               </div>
