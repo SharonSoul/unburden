@@ -93,17 +93,20 @@ export default function LandingPage() {
       <section className="section-full relative overflow-hidden">
         {/* Background Image (bottom layer) */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/images/bg1.jpg"
             alt="Background"
-            className="object-cover opacity-40 bg-black/60 bg-blend-overlay"
+            fill
+            priority
+            quality={75}
+            className="object-cover opacity-40"
             onError={(e) => {
               console.error('Background image failed to load');
               e.currentTarget.style.display = 'none';
-              const placeholder = document.createElement('div');
-              placeholder.className = 'w-full h-full bg-gradient-to-br from-[#b93900]/20 to-[#b93900]/10';
+
             }}
           />
+          {/* Dark overlay to improve text contrast */}
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
@@ -128,7 +131,7 @@ export default function LandingPage() {
                   Say what's hard to say
                   <br />
                   <span className="text-gradient relative">
-                    safely, and <span className="font-heroFont">anonymously</span>
+                    safely, and <span className="font-heroFont"> anonymously</span>
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#b93900] rounded-full"></div>
                   </span>
                 </h1>
@@ -166,7 +169,7 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Right Content (top layer) */}
+            {/* Right Content (top layer) - Using Next.js Image with Custom Loader */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -183,15 +186,39 @@ export default function LandingPage() {
                 ></div>
               </div>
 
-              {/* Main Hero Image */}
+              {/* Main Hero Image with Custom Loader */}
               <div className="relative z-20 w-full max-w-2xl">
-                <img
+                <Image
                   src="/images/monk.png"
-                  alt="Hero Illustration"
-                  width={672} // Adjust based on your image size
-                  height={672} // Adjust based on your image size
+                  alt="Meditation figure representing peace and mindfulness"
+                  width={800}
+                  height={800}
+                  priority
+                  quality={90}
                   className="w-full h-auto vanish-text"
-                  onError={() => console.error('Hero image failed to load')}
+                  onLoad={() => console.log('✅ Hero image loaded successfully with custom loader')}
+                  onError={(e) => {
+                    console.error('❌ Hero image failed to load with custom loader');
+
+                    // Hide the failed image and show fallback
+                    e.currentTarget.style.display = 'none';
+
+                    // Create a beautiful fallback
+                    const fallback = document.createElement('div');
+                    fallback.className = 'w-full aspect-square max-w-2xl bg-gradient-to-br from-[#b93900]/30 via-[#b93900]/20 to-transparent rounded-3xl flex items-center justify-center border border-[#b93900]/40 backdrop-blur-sm';
+                    fallback.innerHTML = `
+                <div class="text-center space-y-4 p-8">
+                  <div class="w-24 h-24 bg-[#b93900]/40 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold text-white/90">Find Your Peace</h3>
+                  <p class="text-white/70 text-lg">A safe space for healing</p>
+                </div>
+              `;
+
+                  }}
                 />
               </div>
             </motion.div>
