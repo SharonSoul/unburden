@@ -21,9 +21,6 @@ import { seedCircles } from '@/data/seedData'
 
 import Image from 'next/image'
 
-import bg1 from './../public/images/bg1.jpg'
-import monk from './../public/images/monk.png'
-
 
 export default function LandingPage() {
   const featuredCircles = seedCircles.slice(0, 3)
@@ -94,7 +91,7 @@ export default function LandingPage() {
         {/* Background Image (bottom layer) */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={bg1}            // <-- replace with your file
+            src="/images/bg1.jpg"            // <-- replace with your file
             alt="Background"
             fill
             priority
@@ -182,7 +179,7 @@ export default function LandingPage() {
 
               {/* Main Hero Image */}
               <Image
-                src={monk}
+                src="/images/monk.png"
                 alt="Hero Illustration"
                 width={2000}
                 height={2000}
