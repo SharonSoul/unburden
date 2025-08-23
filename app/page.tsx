@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { 
-  Shield, 
-  Users, 
-  Heart, 
-  Eye, 
-  Clock, 
+import {
+  Shield,
+  Users,
+  Heart,
+  Eye,
+  Clock,
   CheckCircle,
   ArrowRight,
   Star,
@@ -18,6 +18,12 @@ import {
 } from 'lucide-react'
 import Header from '@/components/Header'
 import { seedCircles } from '@/data/seedData'
+
+import Image from 'next/image'
+import trans from './images/trans.png'
+import trans2 from './images/trans2.png'
+import bg1 from './images/bg1.jpg'
+import bg2 from './images/bg2.jpg'
 
 export default function LandingPage() {
   const featuredCircles = seedCircles.slice(0, 3)
@@ -82,36 +88,50 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-charcoal">
       <Header />
-      
+
       {/* Hero Section - Full Height */}
-      <section className="section-full relative">
-        <div className="floating-shapes">
+      <section className="section-full relative overflow-hidden">
+        {/* Background Image (bottom layer) */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={bg1}            // <-- replace with your file
+            alt="Background"
+            fill
+            priority
+            className="object-cover opacity-50"  // lower this if you want it even softer
+          />
+          {/* Optional dark overlay to improve text contrast */}
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+
+        {/* Bubbles layer (above bg, below content) */}
+        <div className="floating-shapes pointer-events-none absolute inset-0 z-10 opacity-40">
           <div className="shape-3d"></div>
           <div className="shape-3d"></div>
           <div className="shape-3d"></div>
         </div>
-        
+
         <div className="container-responsive max-w-7xl mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Content */}
+            {/* Left Content (top layer) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8 mt-20"
+              className="space-y-8 mt-20 relative z-20"
             >
               <div className="space-y-6 ">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black leading-tight">
-                  Say what's hard to say—
+                <h1 className="text-5xl font-heroFont lg:text-6xl xl:text-7xl font-black leading-tight">
+                  Say what's hard to say
                   <br />
                   <span className="text-gradient relative">
-                    safely, anonymously
+                    safely, and <span className="font-heroFont2"> anonymously</span>
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-orange rounded-full"></div>
                   </span>
                 </h1>
-                
+
                 <p className="text-xl lg:text-2xl text-off-white/80 max-w-2xl leading-relaxed">
-                  Join topic-based Cove Circles for honest talk about addiction and recovery. 
+                  Join topic-based Cove Circles for honest talk about addiction and recovery.
                   You're in control of what you share and what you see.
                 </p>
               </div>
@@ -143,33 +163,50 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Right Content - 3D Abstract Shape */}
+            {/* Right Content (top layer) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative flex justify-center lg:justify-end"
+              className="relative z-20 flex justify-center lg:justify-end"
             >
-              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-radial from-orange/20 via-dark-grey to-transparent rounded-full relative">
-                <div className="absolute inset-4 bg-gradient-radial from-orange/10 to-transparent rounded-full animate-pulse-slow"></div>
-                <div className="absolute inset-8 bg-gradient-radial from-orange/5 to-transparent rounded-full animate-pulse-slow" style={{animationDelay: '1s'}}></div>
+              {/* Optional extra local bubbles behind the image */}
+              <div className="absolute inset-0 z-10 opacity-30 pointer-events-none">
+                <div className="w-80 h-80 lg:w-[32rem] lg:h-[32rem] bg-gradient-radial from-orange/20 via-dark-grey to-transparent rounded-full blur-3xl"></div>
+                <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-radial from-orange/10 to-transparent rounded-full blur-2xl animate-pulse-slow"></div>
+                <div
+                  className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-radial from-orange/5 to-transparent rounded-full blur-2xl animate-pulse-slow"
+                  style={{ animationDelay: "1s" }}
+                ></div>
               </div>
+
+              {/* Main Hero Image */}
+              <Image
+                src={trans2}
+                alt="Hero Illustration"
+                width={2000}
+                height={2000}
+                className="relative z-20 w-[2000px] lg:w-[2000px] h-auto object-cover"
+                priority
+              />
             </motion.div>
           </div>
         </div>
 
-        {/* Info Icon */}
+        {/* Info Icon (top layer) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute bottom-8 left-8"
+          className="absolute bottom-8 left-8 z-20"
         >
           <div className="w-12 h-12 bg-dark-grey/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-light-grey/20">
             <span className="text-white font-bold text-lg">i</span>
           </div>
         </motion.div>
       </section>
+
+
 
       {/* How It Works Section - Full Height */}
       <section id="how-it-works" className="section-full relative">
@@ -189,7 +226,7 @@ export default function LandingPage() {
               className="space-y-8"
             >
               <div className="text-off-white/60 text-sm">• How Unburden Works</div>
-              
+
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight">
                 3 simple steps to connect with{' '}
                 <span className="text-emphasis">supportive peers</span>
@@ -211,38 +248,33 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative p-6 rounded-xl border ${
-                    index === 0 
-                      ? 'bg-orange border-orange' 
-                      : 'bg-dark-grey border-light-grey/20'
-                  }`}
+                  className={`relative p-6 rounded-xl border ${index === 0
+                    ? 'bg-orange border-orange'
+                    : 'bg-dark-grey border-light-grey/20'
+                    }`}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                      index === 0 ? 'bg-white/20' : 'bg-orange/20'
-                    }`}>
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${index === 0 ? 'bg-white/20' : 'bg-orange/20'
+                      }`}>
                       <div className={index === 0 ? 'text-white' : 'text-orange'}>
                         {item.icon}
                       </div>
                     </div>
-                    
+
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <span className={`text-sm font-bold ${
-                          index === 0 ? 'text-white' : 'text-orange'
-                        }`}>
+                        <span className={`text-sm font-bold ${index === 0 ? 'text-white' : 'text-orange'
+                          }`}>
                           {item.step}
                         </span>
-                        <h3 className={`text-xl font-bold ${
-                          index === 0 ? 'text-white' : 'text-white'
-                        }`}>
+                        <h3 className={`text-xl font-bold ${index === 0 ? 'text-white' : 'text-white'
+                          }`}>
                           {item.title}
                         </h3>
                       </div>
-                      
-                      <p className={`${
-                        index === 0 ? 'text-white/90' : 'text-off-white/80'
-                      }`}>
+
+                      <p className={`${index === 0 ? 'text-white/90' : 'text-off-white/80'
+                        }`}>
                         {item.description}
                       </p>
                     </div>
@@ -267,12 +299,12 @@ export default function LandingPage() {
               className="space-y-8"
             >
               <div className="text-off-white/60 text-sm">• Featured Cove Circles</div>
-              
+
               <div className="space-y-6">
                 <h2 className="text-4xl lg:text-5xl font-black text-white">
                   Join supportive communities around specific topics
                 </h2>
-                
+
                 <p className="text-xl text-off-white/80 leading-relaxed">
                   Find your people in topic-based spaces designed for honest, judgment-free conversation.
                 </p>
@@ -325,7 +357,7 @@ export default function LandingPage() {
               <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight">
                 What You Control
               </h2>
-              
+
               <p className="text-xl text-off-white/80 leading-relaxed">
                 Your privacy and experience are in your hands
               </p>
@@ -375,7 +407,7 @@ export default function LandingPage() {
               className="space-y-8"
             >
               <div className="text-off-white/60 text-sm">• Safety & Resources</div>
-              
+
               <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight">
                 Clear boundaries and immediate support when you need it
               </h2>

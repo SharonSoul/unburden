@@ -4,6 +4,36 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+@font-face {
+  font-family: 'logoFont';
+  src: url('./fonts/Agraham.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'logoFont2';
+  src: url('./fonts/Avigea.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'heroFont';
+  src: url('./fonts/SpaceGrotesk.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'heroFont2';
+  src: url('./fonts/GROOVED.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;

@@ -23,6 +23,10 @@ module.exports = {
       },
       fontFamily: {
         'modern': ['Inter', 'system-ui', 'sans-serif'],
+        'logoFont': ['logoFont', 'system-ui', 'sans-serif'],
+        'logoFont2': ['logoFont2', 'system-ui', 'sans-serif'],
+        'heroFont': ['heroFont', 'system-ui', 'sans-serif'],
+        'heroFont2': ['heroFont2', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         'sm': '8px',
