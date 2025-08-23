@@ -104,7 +104,6 @@ export default function LandingPage() {
               e.currentTarget.style.display = 'none';
               const placeholder = document.createElement('div');
               placeholder.className = 'w-full h-full bg-gradient-to-br from-[#b93900]/20 to-[#b93900]/10';
-              e.currentTarget.parentNode.appendChild(placeholder);
             }}
           />
           <div className="absolute inset-0 bg-black/30" />
