@@ -22,12 +22,11 @@ module.exports = {
         'accent-purple': '#9B59B6',
       },
       fontFamily: {
-        'modern': ['Inter', 'system-ui', 'sans-serif'],
-        'logoFont': ['logoFont', 'system-ui', 'sans-serif'],
-        'logoFont2': ['logoFont2', 'system-ui', 'sans-serif'],
-        'heroFont': ['heroFont', 'system-ui', 'sans-serif'],
-        'heroFont2': ['heroFont2', 'system-ui', 'sans-serif'],
+        modern: ["var(--font-inter)", "system-ui", "sans-serif"], // Inter (Google)
+        heroFont: ["var(--font-heroFont)", "system-ui", "sans-serif"], // HeroFont
+        heroFont2: ["var(--font-heroFont2)", "system-ui", "sans-serif"], // HeroFont2
       },
+      
       borderRadius: {
         'sm': '8px',
         'md': '16px',

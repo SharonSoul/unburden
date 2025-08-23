@@ -1,8 +1,27 @@
 import type { Metadata } from 'next'
+import localFont from "next/font/local"
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// Google font (Inter)
+const inter = Inter({ subsets: ['latin'], variable: "--font-inter" })
+
+// Local font 1 (HeroFont Regular + Bold)
+const heroFont = localFont({
+  src: [
+    { path: "../public/fonts/grooved.ttf", weight: "400", style: "normal" }
+  ],
+  variable: "--font-heroFont"
+})
+
+const heroFont2 = localFont({
+  src: [
+    { path: "../public/fonts/Avigea.ttf", weight: "400", style: "normal" }
+  ],
+  variable: "--font-heroFont2"
+})
+
+
 
 export const metadata: Metadata = {
   title: 'Unburden - Peer Support for Addiction Recovery',
@@ -53,8 +72,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      className={`${inter.variable} ${heroFont.variable} ${heroFont2.variable}`}
+    >
+      <body className="font-sans">{children}</body>
     </html>
   )
 }

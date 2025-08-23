@@ -1,5 +1,7 @@
 'use client'
 
+import localFont from "next/font/local"
+import { Inter } from 'next/font/google'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
@@ -18,8 +20,8 @@ import {
 } from 'lucide-react'
 import Header from '@/components/Header'
 import { seedCircles } from '@/data/seedData'
-
 import Image from 'next/image'
+
 
 
 export default function LandingPage() {
@@ -118,11 +120,11 @@ export default function LandingPage() {
               className="space-y-8 mt-20 relative z-20"
             >
               <div className="space-y-6 ">
-                <h1 className="text-5xl font-heroFont lg:text-6xl xl:text-7xl font-black leading-tight">
+                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black leading-tight">
                   Say what's hard to say
                   <br />
                   <span className="text-gradient relative">
-                    safely, and <span className="font-heroFont2"> anonymously</span>
+                    safely, and <span className="font-heroFont"> anonymously</span>
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#b93900] rounded-full"></div>
                   </span>
                 </h1>

@@ -75,7 +75,7 @@ export default function Header() {
                 <Heart className="w-6 h-6 text-white" />
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-sm font-logoFont font-bold text-white">Unburden</span>
+                <span className="text-sm font-bold text-white">Unburden</span>
                 <div className="w-8 h-1 bg-[#b93900] rounded-full"></div>
               </div>
             </Link>
