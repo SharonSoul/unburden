@@ -179,17 +179,23 @@ export default function LandingPage() {
                 ></div>
               </div>
 
-              {/* Main Hero Image */}
-              {/* <Image
-                src="/images/monk.png"
-                alt="Hero Illustration"
-                width={2000}
-                height={2000}
-                className="relative z-20 w-[2000px] lg:w-[2000px] h-auto object-cover"
-                priority
-              /> */}
-              <img src="/images/monk.png" alt="My pic" className="w-full h-auto" />
-
+              {/* Main Hero Image - FIXED VERSION */}
+              <div className="relative z-20 w-full max-w-2xl">
+                <Image
+                  src="/images/monk.png"
+                  alt="Hero Illustration"
+                  width={800}
+                  height={800}
+                  className="w-full h-auto vanish-text"
+                  priority
+                  quality={90}
+                  onError={(e) => {
+                    console.error('Image failed to load:', e);
+                    // Fallback - you can set a default image or hide the image
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
             </motion.div>
           </div>
         </div>
