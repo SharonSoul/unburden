@@ -147,7 +147,7 @@ export default function JournalPage() {
   }
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-screen bg-[#000C18]">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -174,11 +174,11 @@ export default function JournalPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-8"
           >
-            <div className="card border-orange/20 bg-gradient-to-r from-orange/5 to-orange/10">
+            <div className="card border-[#b93900]/20 bg-gradient-to-r from-[#b93900]/5 to-[#b93900]/10">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-orange/20 rounded-full flex items-center justify-center">
-                    <BookOpen className="w-6 h-6 text-orange" />
+                  <div className="w-12 h-12 bg-[#b93900]/20 rounded-full flex items-center justify-center">
+                    <BookOpen className="w-6 h-6 text-[#b93900]" />
                   </div>
                   <div>
                     <p className="font-medium text-white">Want to keep your journal across devices?</p>
@@ -259,7 +259,7 @@ export default function JournalPage() {
             className="mb-8"
           >
             <h3 className="text-lg font-medium text-white mb-4 flex items-center space-x-2">
-              <Lightbulb className="w-5 h-5 text-orange" />
+              <Lightbulb className="w-5 h-5 text-[#b93900]" />
               <span>Quick Prompts</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -310,7 +310,7 @@ export default function JournalPage() {
                       </button>
                       <button
                         onClick={() => deleteEntry(entry.id)}
-                        className="p-2 text-off-white/60 hover:text-orange hover:bg-orange/10 rounded transition-colors"
+                        className="p-2 text-off-white/60 hover:text-[#b93900] hover:bg-[#b93900]/10 rounded transition-colors"
                         title="Delete entry"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -535,7 +535,7 @@ export default function JournalPage() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-8 text-center">
-                <BookOpen className="w-16 h-16 text-orange mx-auto mb-6" />
+                <BookOpen className="w-16 h-16 text-[#b93900] mx-auto mb-6" />
                 <h2 className="text-2xl font-bold text-white mb-4">Sync Your Journal</h2>
                 <p className="text-off-white/80 mb-6">
                   Create an account to sync your journal entries across devices and never lose your progress.

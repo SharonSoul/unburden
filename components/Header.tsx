@@ -70,13 +70,13 @@ export default function Header() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-gradient-to-br from-orange to-orange-light rounded-xl flex items-center justify-center shadow-glow"
+                className="w-10 h-10 bg-gradient-to-br from-[#b93900] to-[#fd8600] rounded-xl flex items-center justify-center shadow-glow"
               >
                 <Heart className="w-6 h-6 text-white" />
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-sm font-logoFont font-bold text-white">Unburden</span>
-                <div className="w-8 h-1 bg-orange rounded-full"></div>
+                <div className="w-8 h-1 bg-[#b93900] rounded-full"></div>
               </div>
             </Link>
 
@@ -86,21 +86,21 @@ export default function Header() {
                 href="/coves" 
                 className="text-off-white/80 hover:text-white transition-colors flex items-center space-x-2 group"
               >
-                <Users className="w-4 h-4 group-hover:text-orange transition-colors" />
+                <Users className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
                 <span>Cove Circles</span>
               </Link>
               <Link 
                 href="/journal" 
                 className="text-off-white/80 hover:text-white transition-colors flex items-center space-x-2 group"
               >
-                <BookOpen className="w-4 h-4 group-hover:text-orange transition-colors" />
+                <BookOpen className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
                 <span>Journal</span>
               </Link>
               <Link 
                 href="/resources" 
                 className="text-off-white/80 hover:text-white transition-colors flex items-center space-x-2 group"
               >
-                <Shield className="w-4 h-4 group-hover:text-orange transition-colors" />
+                <Shield className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
                 <span>Resources</span>
               </Link>
             </nav>
@@ -112,7 +112,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCrisisHelp}
-                className="bg-orange hover:bg-orange-light text-white px-4 sm:px-6 py-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center space-x-2 shadow-glow hover:shadow-glow"
+                className="bg-[#b93900] hover:bg-[#fd8600] text-white px-4 sm:px-6 py-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center space-x-2 shadow-glow hover:shadow-glow"
               >
                 <HelpCircle className="w-4 h-4 flex-shrink-0" />
                 <span className="hidden sm:inline whitespace-nowrap">Crisis Help</span>
@@ -132,7 +132,7 @@ export default function Header() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-white hover:text-orange transition-colors"
+                className="md:hidden p-2 text-white hover:text-[#b93900] transition-colors"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -195,15 +195,15 @@ export default function Header() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-orange/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <HelpCircle className="w-10 h-10 text-orange" />
+                <div className="w-20 h-20 bg-[#b93900]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <HelpCircle className="w-10 h-10 text-[#b93900]" />
                 </div>
                 <h2 className="text-2xl font-bold text-white mb-3">I'm sorry you're going through this</h2>
                 <p className="text-off-white/70">You deserve immediate support.</p>
               </div>
 
               <div className="space-y-4 mb-8">
-                <button className="w-full bg-orange hover:bg-orange-light text-white py-4 rounded-lg font-semibold transition-colors flex items-center justify-center shadow-glow">
+                <button className="w-full bg-[#b93900] hover:bg-[#fd8600] text-white py-4 rounded-lg font-semibold transition-colors flex items-center justify-center shadow-glow">
                   Show help options
                 </button>
                 <button className="w-full bg-dark-grey hover:bg-medium-grey text-white py-4 rounded-lg font-medium transition-colors border border-light-grey/30 flex items-center justify-center">

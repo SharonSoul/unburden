@@ -81,7 +81,7 @@ export default function ResourcesPage() {
     : articles.filter(article => article.category === selectedCategory)
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-screen bg-[#000C18]">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -108,11 +108,11 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12"
           >
-            <div className="card border-orange/20 bg-gradient-to-r from-orange/5 to-orange/10">
+            <div className="card border-[#b93900]/20 bg-gradient-to-r from-[#b93900]/5 to-[#b93900]/10">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-orange/20 rounded-full flex items-center justify-center">
-                    <AlertTriangle className="w-6 h-6 text-orange" />
+                  <div className="w-12 h-12 bg-[#b93900]/20 rounded-full flex items-center justify-center">
+                    <AlertTriangle className="w-6 h-6 text-[#b93900]" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Get Urgent Help</h2>
@@ -164,7 +164,7 @@ export default function ResourcesPage() {
                       className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4 hover:bg-dark-grey/70 transition-colors"
                     >
                       <div className="flex items-center space-x-3">
-                        <Phone className="w-5 h-5 text-orange" />
+                        <Phone className="w-5 h-5 text-[#b93900]" />
                         <span className="font-medium text-white">{hotline}</span>
                       </div>
                     </motion.div>
@@ -184,7 +184,7 @@ export default function ResourcesPage() {
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <BookOpen className="w-8 h-8 text-orange" />
+                  <BookOpen className="w-8 h-8 text-[#b93900]" />
                   <h2 className="text-2xl font-bold text-white">Educational Articles</h2>
                 </div>
                 <button
@@ -214,7 +214,7 @@ export default function ResourcesPage() {
                         onClick={() => setSelectedCategory(category)}
                         className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                           selectedCategory === category
-                            ? 'bg-orange text-white'
+                            ? 'bg-[#b93900] text-white'
                             : 'bg-dark-grey text-off-white/80 hover:bg-medium-grey hover:text-white border border-light-grey/30'
                         }`}
                       >
@@ -234,12 +234,12 @@ export default function ResourcesPage() {
                         className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4 hover:bg-dark-grey/70 hover:border-light-grey/30 transition-all cursor-pointer group"
                       >
                         <div className="mb-3">
-                          <span className="text-xs text-orange bg-orange/20 px-2 py-1 rounded-full">
+                          <span className="text-xs text-[#b93900] bg-[#b93900]/20 px-2 py-1 rounded-full">
                             {article.category}
                           </span>
                         </div>
                         
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-orange transition-colors">
+                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#b93900] transition-colors">
                           {article.title}
                         </h3>
                         
@@ -252,7 +252,7 @@ export default function ResourcesPage() {
                             <Clock className="w-3 h-3" />
                             <span>{article.readTime}</span>
                           </span>
-                          <ExternalLink className="w-4 h-4 group-hover:text-orange transition-colors" />
+                          <ExternalLink className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
                         </div>
                       </motion.div>
                     ))}
@@ -272,7 +272,7 @@ export default function ResourcesPage() {
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <Users className="w-8 h-8 text-orange" />
+                  <Users className="w-8 h-8 text-[#b93900]" />
                   <h2 className="text-2xl font-bold text-white">Community Guidelines</h2>
                 </div>
                 <button
@@ -298,19 +298,19 @@ export default function ResourcesPage() {
                     <h3 className="text-lg font-medium text-white mb-3">What We Do</h3>
                     <ul className="space-y-2 text-off-white/80">
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Provide peer support and understanding</span>
                       </li>
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Share personal experiences and stories</span>
                       </li>
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Offer encouragement and hope</span>
                       </li>
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Create a safe, judgment-free space</span>
                       </li>
                     </ul>
@@ -320,19 +320,19 @@ export default function ResourcesPage() {
                     <h3 className="text-lg font-medium text-white mb-3">What We Don't Do</h3>
                     <ul className="space-y-2 text-off-white/80">
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Give medical or clinical advice</span>
                       </li>
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Diagnose or treat conditions</span>
                       </li>
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Enable harmful behaviors</span>
                       </li>
                       <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
                         <span>Judge or shame others</span>
                       </li>
                     </ul>
@@ -351,7 +351,7 @@ export default function ResourcesPage() {
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <Heart className="w-8 h-8 text-orange" />
+                  <Heart className="w-8 h-8 text-[#b93900]" />
                   <h2 className="text-2xl font-bold text-white">Additional Support</h2>
                 </div>
                 <button

@@ -24,6 +24,22 @@ import trans from './images/trans.png'
 import trans2 from './images/trans2.png'
 import bg1 from './images/bg1.jpg'
 import bg2 from './images/bg2.jpg'
+import hero1 from './images/hero1.png'
+import hero2 from './images/hero2.png'
+import hero3 from './images/hero3.png'
+import hero4 from './images/hero4.png'
+import hero5 from './images/hero5.png'
+import hero6 from './images/hero6.png'
+import hero7 from './images/hero7.png'
+import hero8 from './images/hero8.png'
+import hero9 from './images/hero9.png'
+import hero10 from './images/hero10.png'
+import hero11 from './images/hero11.png'
+import hero12 from './images/hero12.png'
+import hero13 from './images/hero13.png'
+import hero14 from './images/hero14.png'
+import monk from './images/monk.png'
+import snake from './images/snake.png'
 
 export default function LandingPage() {
   const featuredCircles = seedCircles.slice(0, 3)
@@ -86,7 +102,7 @@ export default function LandingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-screen bg-[#000C18]">
       <Header />
 
       {/* Hero Section - Full Height */}
@@ -98,7 +114,7 @@ export default function LandingPage() {
             alt="Background"
             fill
             priority
-            className="object-cover opacity-50"  // lower this if you want it even softer
+            className="object-cover opacity-40 bg-black/60 bg-blend-overlay"  // lower this if you want it even softer
           />
           {/* Optional dark overlay to improve text contrast */}
           <div className="absolute inset-0 bg-black/30" />
@@ -126,7 +142,7 @@ export default function LandingPage() {
                   <br />
                   <span className="text-gradient relative">
                     safely, and <span className="font-heroFont2"> anonymously</span>
-                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-orange rounded-full"></div>
+                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#b93900] rounded-full"></div>
                   </span>
                 </h1>
 
@@ -149,15 +165,15 @@ export default function LandingPage() {
               {/* Trust Elements */}
               <div className="flex flex-wrap justify-center sm:justify-start items-center gap-6 text-sm text-off-white/60">
                 <div className="flex items-center space-x-2">
-                  <Shield className="w-4 h-4 text-orange" />
+                  <Shield className="w-4 h-4 text-[#b93900]" />
                   <span>Anonymity badge</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4 text-orange" />
+                  <Users className="w-4 h-4 text-[#b93900]" />
                   <span>Community guidelines</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Heart className="w-4 h-4 text-orange" />
+                  <Heart className="w-4 h-4 text-[#b93900]" />
                   <span>Safety note</span>
                 </div>
               </div>
@@ -172,17 +188,17 @@ export default function LandingPage() {
             >
               {/* Optional extra local bubbles behind the image */}
               <div className="absolute inset-0 z-10 opacity-30 pointer-events-none">
-                <div className="w-80 h-80 lg:w-[32rem] lg:h-[32rem] bg-gradient-radial from-orange/20 via-dark-grey to-transparent rounded-full blur-3xl"></div>
-                <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-radial from-orange/10 to-transparent rounded-full blur-2xl animate-pulse-slow"></div>
+                <div className="w-80 h-80 lg:w-[32rem] lg:h-[32rem] bg-gradient-radial from-[#b93900]/20 via-dark-grey to-transparent rounded-full blur-3xl"></div>
+                <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-radial from-[#b93900]/10 to-transparent rounded-full blur-2xl animate-pulse-slow"></div>
                 <div
-                  className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-radial from-orange/5 to-transparent rounded-full blur-2xl animate-pulse-slow"
+                  className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-radial from-[#b93900]/5 to-transparent rounded-full blur-2xl animate-pulse-slow"
                   style={{ animationDelay: "1s" }}
                 ></div>
               </div>
 
               {/* Main Hero Image */}
               <Image
-                src={trans2}
+                src={monk}
                 alt="Hero Illustration"
                 width={2000}
                 height={2000}
@@ -249,21 +265,21 @@ export default function LandingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className={`relative p-6 rounded-xl border ${index === 0
-                    ? 'bg-orange border-orange'
+                    ? 'bg-[#b93900] border-[#b93900]'
                     : 'bg-dark-grey border-light-grey/20'
                     }`}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${index === 0 ? 'bg-white/20' : 'bg-orange/20'
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${index === 0 ? 'bg-white/20' : 'bg-[#b93900]/20'
                       }`}>
-                      <div className={index === 0 ? 'text-white' : 'text-orange'}>
+                      <div className={index === 0 ? 'text-white' : 'text-[#b93900]'}>
                         {item.icon}
                       </div>
                     </div>
 
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <span className={`text-sm font-bold ${index === 0 ? 'text-white' : 'text-orange'
+                        <span className={`text-sm font-bold ${index === 0 ? 'text-white' : 'text-[#b93900]'
                           }`}>
                           {item.step}
                         </span>
@@ -321,12 +337,12 @@ export default function LandingPage() {
                     className="card card-hover cursor-pointer group"
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-lg font-semibold text-white group-hover:text-orange transition-colors">
+                      <h3 className="text-lg font-semibold text-white group-hover:text-[#b93900] transition-colors">
                         {circle.name}
                       </h3>
                       {circle.isLive && (
-                        <div className="flex items-center space-x-1 bg-orange/20 text-orange px-2 py-1 rounded-full text-xs font-medium">
-                          <div className="w-2 h-2 bg-orange rounded-full animate-pulse"></div>
+                        <div className="flex items-center space-x-1 bg-[#b93900]/20 text-[#b93900] px-2 py-1 rounded-full text-xs font-medium">
+                          <div className="w-2 h-2 bg-[#b93900] rounded-full animate-pulse"></div>
                           <span>LIVE</span>
                         </div>
                       )}
@@ -334,7 +350,7 @@ export default function LandingPage() {
                     <p className="text-off-white/80 text-sm mb-4">{circle.description}</p>
                     <div className="flex items-center justify-between text-sm text-off-white/60">
                       <span>{circle.activeCount} active members</span>
-                      <span className="text-orange">{circle.mood}</span>
+                      <span className="text-[#b93900]">{circle.mood}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -372,8 +388,8 @@ export default function LandingPage() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="flex items-start space-x-4"
                   >
-                    <div className="w-12 h-12 bg-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <div className="text-orange">
+                    <div className="w-12 h-12 bg-[#b93900]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="text-[#b93900]">
                         {item.icon}
                       </div>
                     </div>
@@ -416,15 +432,15 @@ export default function LandingPage() {
                 <h3 className="text-xl font-semibold text-white mb-4">Clear Boundaries</h3>
                 <ul className="space-y-3 text-off-white/80">
                   <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-orange mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#b93900] mt-0.5 flex-shrink-0" />
                     <span>Peer support only—no clinical advice</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-orange mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#b93900] mt-0.5 flex-shrink-0" />
                     <span>No illegal procurement or sales</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-orange mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#b93900] mt-0.5 flex-shrink-0" />
                     <span>Compassionate moderation</span>
                   </li>
                 </ul>
@@ -440,8 +456,8 @@ export default function LandingPage() {
               className="space-y-8"
             >
               <div className="text-center">
-                <div className="w-24 h-24 bg-orange/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Shield className="w-12 h-12 text-orange" />
+                <div className="w-24 h-24 bg-[#b93900]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Shield className="w-12 h-12 text-[#b93900]" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-4">Crisis Support</h3>
                 <p className="text-off-white/80 mb-6">
@@ -464,7 +480,7 @@ export default function LandingPage() {
             {/* Brand Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-orange to-orange-light rounded-xl flex items-center justify-center shadow-glow">
+                <div className="w-10 h-10 bg-gradient-to-br from-[#b93900] to-[#b93900] rounded-xl flex items-center justify-center shadow-glow">
                   <Heart className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-2xl font-bold text-white">Unburden</span>
@@ -472,7 +488,7 @@ export default function LandingPage() {
               <p className="text-off-white/80 max-w-md mb-6">
                 A privacy-first, judgment-free space for peer support around addiction and recovery.
               </p>
-              <div className="bg-orange rounded-2xl p-6">
+              <div className="bg-[#b93900] rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-white mb-3">Get Support</h3>
                 <p className="text-white/90 mb-4">
                   Join our community and find the support you need on your recovery journey.

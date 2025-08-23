@@ -34,7 +34,7 @@ export default function CircleCard({ circle }: CircleCardProps) {
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange transition-colors">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#b93900] transition-colors">
                 {circle.name}
               </h3>
               <p className="text-off-white/80 text-sm leading-relaxed">
@@ -47,9 +47,9 @@ export default function CircleCard({ circle }: CircleCardProps) {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="flex items-center space-x-1 bg-orange/20 text-orange px-3 py-1 rounded-full text-xs font-semibold border border-orange/30"
+                className="flex items-center space-x-1 bg-[#b93900]/20 text-[#b93900] px-3 py-1 rounded-full text-xs font-semibold border border-[#b93900]/30"
               >
-                <div className="w-2 h-2 bg-orange rounded-full animate-pulse mr-1"></div>
+                <div className="w-2 h-2 bg-[#b93900] rounded-full animate-pulse mr-1"></div>
                 <span>LIVE</span>
               </motion.div>
             )}
@@ -83,7 +83,7 @@ export default function CircleCard({ circle }: CircleCardProps) {
             </div>
             
             <div className="flex items-center space-x-1">
-              <span className="text-orange font-medium">{circle.mood}</span>
+              <span className="text-[#b93900] font-medium">{circle.mood}</span>
             </div>
           </div>
 

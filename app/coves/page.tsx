@@ -76,7 +76,7 @@ export default function CoveCirclesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-screen bg-[#000C18]">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -88,7 +88,7 @@ export default function CoveCirclesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mt-20 mb-8 sm:mb-12"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
+            <h1 className="text-4xl font-heroFont2 sm:text-5xl lg:text-6xl font-black text-white mb-6">
               Cove Circles
             </h1>
             <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">
@@ -111,7 +111,7 @@ export default function CoveCirclesPage() {
                 placeholder="Search circles by name or description..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-dark-grey border border-light-grey/30 rounded-xl pl-12 pr-4 py-4 text-white placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-orange/50 focus:border-orange transition-all duration-300"
+                className="w-full bg-dark-grey border border-light-grey/30 rounded-xl pl-12 pr-4 py-4 text-white placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-[#b93900]/50 focus:border-[#b93900] transition-all duration-300"
               />
             </div>
 
@@ -122,7 +122,7 @@ export default function CoveCirclesPage() {
                 onClick={() => setShowActiveOnly(!showActiveOnly)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-all duration-300 ${
                   showActiveOnly
-                    ? 'bg-orange border-orange text-white'
+                    ? 'bg-[#b93900] border-[#b93900] text-white'
                     : 'bg-dark-grey border-light-grey/30 text-off-white/80 hover:border-light-grey/50'
                 }`}
               >
@@ -138,7 +138,7 @@ export default function CoveCirclesPage() {
                     onClick={() => toggleTag(tag)}
                     className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       selectedTags.includes(tag)
-                        ? 'bg-orange text-white'
+                        ? 'bg-[#b93900] text-white'
                         : 'bg-dark-grey text-off-white/80 hover:bg-medium-grey hover:text-white border border-light-grey/30'
                     }`}
                   >
@@ -152,7 +152,7 @@ export default function CoveCirclesPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'name' | 'active' | 'mood')}
-                  className="appearance-none bg-dark-grey border border-light-grey/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-orange/50 focus:border-orange transition-all duration-300 pr-10"
+                  className="appearance-none bg-dark-grey border border-light-grey/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#b93900]/50 focus:border-[#b93900] transition-all duration-300 pr-10"
                 >
                   <option value="name">Sort by Name</option>
                   <option value="active">Sort by Activity</option>
