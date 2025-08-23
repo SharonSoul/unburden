@@ -89,17 +89,24 @@ export default function LandingPage() {
       <Header />
 
       {/* Hero Section - Full Height */}
+
       <section className="section-full relative overflow-hidden">
         {/* Background Image (bottom layer) */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/bg1.jpg"            // <-- replace with your file
+            src="/images/bg1.jpg"
             alt="Background"
             fill
             priority
-            className="object-cover opacity-40 bg-black/60 bg-blend-overlay"  // lower this if you want it even softer
+            className="object-cover opacity-40 bg-black/60 bg-blend-overlay"
+            onError={(e) => {
+              console.error('Background image failed to load');
+              e.currentTarget.style.display = 'none';
+              const placeholder = document.createElement('div');
+              placeholder.className = 'w-full h-full bg-gradient-to-br from-[#b93900]/20 to-[#b93900]/10';
+              e.currentTarget.parentNode.appendChild(placeholder);
+            }}
           />
-          {/* Optional dark overlay to improve text contrast */}
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
@@ -110,7 +117,7 @@ export default function LandingPage() {
           <div className="shape-3d"></div>
         </div>
 
-        <div className="container-responsive max-w-7xl mx-auto ">
+        <div className="container-responsive max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Content (top layer) */}
             <motion.div
@@ -119,12 +126,12 @@ export default function LandingPage() {
               transition={{ duration: 0.8 }}
               className="space-y-8 mt-20 relative z-20"
             >
-              <div className="space-y-6 ">
+              <div className="space-y-6">
                 <h1 className="text-5xl vanish-text lg:text-6xl xl:text-7xl font-black leading-tight">
                   Say what's hard to say
                   <br />
-                  <span className="text-gradient relative ">
-                    safely, and <span className="font-heroFont "> anonymously</span>
+                  <span className="text-gradient relative">
+                    safely, and <span className="font-heroFont">anonymously</span>
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#b93900] rounded-full"></div>
                   </span>
                 </h1>
@@ -162,7 +169,7 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Right Content (top layer) - FIXED VERSION */}
+            {/* Right Content (top layer) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -179,28 +186,16 @@ export default function LandingPage() {
                 ></div>
               </div>
 
-              {/* Main Hero Image - Use regular img tag instead of Next.js Image */}
+              {/* Main Hero Image */}
               <div className="relative z-20 w-full max-w-2xl">
-                <img
+                <Image
                   src="/images/monk.png"
                   alt="Hero Illustration"
+                  width={672} // Adjust based on your image size
+                  height={672} // Adjust based on your image size
+                  priority
                   className="w-full h-auto vanish-text"
-                  onError={(e) => {
-                    console.error('Hero image failed to load');
-                    // Show a styled placeholder instead
-                    e.currentTarget.style.display = 'none';
-                    const placeholder = document.createElement('div');
-                    placeholder.className = 'w-full h-96 bg-gradient-to-br from-[#b93900]/20 to-[#b93900]/10 rounded-2xl flex items-center justify-center border-2 border-[#b93900]/30';
-                    placeholder.innerHTML = `
-                <div class="text-center">
-                  <div class="w-16 h-16 bg-[#b93900]/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span class="text-2xl">🧘</span>
-                  </div>
-                  <p class="text-white/60">Hero Image</p>
-                </div>
-              `;
-                   
-                  }}
+                  onError={() => console.error('Hero image failed to load')}
                 />
               </div>
             </motion.div>
