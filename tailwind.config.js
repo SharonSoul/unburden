@@ -76,7 +76,7 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         // Add your custom background images here
-        'hero-bg': "url('/images/bg1.jpg')",
+        'bg1': "url('/images/bg1.jpg')",
         'monk': "url('/images/monk.png')",
         // You can also add variations with different opacities or overlays
         'hero-bg-dark': "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/bg1.jpg')",

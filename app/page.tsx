@@ -93,11 +93,9 @@ export default function LandingPage() {
       <section className="section-full relative overflow-hidden">
         {/* Background Image (bottom layer) */}
         <div className="absolute inset-0 z-0">
-          <Image
+          <img
             src="/images/bg1.jpg"
             alt="Background"
-            fill
-            priority
             className="object-cover opacity-40 bg-black/60 bg-blend-overlay"
             onError={(e) => {
               console.error('Background image failed to load');
@@ -187,12 +185,11 @@ export default function LandingPage() {
 
               {/* Main Hero Image */}
               <div className="relative z-20 w-full max-w-2xl">
-                <Image
+                <img
                   src="/images/monk.png"
                   alt="Hero Illustration"
                   width={672} // Adjust based on your image size
                   height={672} // Adjust based on your image size
-                  priority
                   className="w-full h-auto vanish-text"
                   onError={() => console.error('Hero image failed to load')}
                 />
