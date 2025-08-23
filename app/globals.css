@@ -32,6 +32,17 @@
   font-style: normal;
 } */
 
+.vanish-text {
+  position: relative;
+  display: inline-block;
+  /* Fade bottom using mask */
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
 
 
 @layer base {

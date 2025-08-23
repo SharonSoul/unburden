@@ -120,11 +120,11 @@ export default function LandingPage() {
               className="space-y-8 mt-20 relative z-20"
             >
               <div className="space-y-6 ">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black leading-tight">
+                <h1 className="text-5xl vanish-text lg:text-6xl xl:text-7xl font-black leading-tight">
                   Say what's hard to say
                   <br />
-                  <span className="text-gradient relative">
-                    safely, and <span className="font-heroFont"> anonymously</span>
+                  <span className="text-gradient relative ">
+                    safely, and <span className="font-heroFont "> anonymously</span>
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#b93900] rounded-full"></div>
                   </span>
                 </h1>
@@ -180,14 +180,16 @@ export default function LandingPage() {
               </div>
 
               {/* Main Hero Image */}
-              <Image
+              {/* <Image
                 src="/images/monk.png"
                 alt="Hero Illustration"
                 width={2000}
                 height={2000}
                 className="relative z-20 w-[2000px] lg:w-[2000px] h-auto object-cover"
                 priority
-              />
+              /> */}
+              <img src="/images/monk.png" alt="My pic" className="w-full h-auto" />
+
             </motion.div>
           </div>
         </div>
