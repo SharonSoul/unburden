@@ -20,26 +20,10 @@ import Header from '@/components/Header'
 import { seedCircles } from '@/data/seedData'
 
 import Image from 'next/image'
-import trans from './images/trans.png'
-import trans2 from './images/trans2.png'
-import bg1 from './images/bg1.jpg'
-import bg2 from './images/bg2.jpg'
-import hero1 from './images/hero1.png'
-import hero2 from './images/hero2.png'
-import hero3 from './images/hero3.png'
-import hero4 from './images/hero4.png'
-import hero5 from './images/hero5.png'
-import hero6 from './images/hero6.png'
-import hero7 from './images/hero7.png'
-import hero8 from './images/hero8.png'
-import hero9 from './images/hero9.png'
-import hero10 from './images/hero10.png'
-import hero11 from './images/hero11.png'
-import hero12 from './images/hero12.png'
-import hero13 from './images/hero13.png'
-import hero14 from './images/hero14.png'
-import monk from './images/monk.png'
-import snake from './images/snake.png'
+
+import bg1 from './../public/images/bg1.jpg'
+import monk from './../public/images/monk.png'
+
 
 export default function LandingPage() {
   const featuredCircles = seedCircles.slice(0, 3)
