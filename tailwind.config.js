@@ -9,17 +9,21 @@ module.exports = {
     extend: {
       colors: {
         // Modern futuristic color palette
-        'charcoal': '#1A1A1A',
-        'dark-grey': '#2A2A2A',
+        'charcoal': '#000C18',
+        'navy': '#000C18',
+        'dark-grey': '#19242f',
         'medium-grey': '#3A3A3A',
         'light-grey': '#4A4A4A',
         'white': '#FFFFFF',
         'off-white': '#F5F5F5',
-        'orange': '#FF6B35',
-        'orange-light': '#FF8A65',
-        'orange-dark': '#E55A2B',
+        'orange': '#b93900',
+        'orange-light': '#fd8600',
+        'orange-dark': '#523a1e',
         'accent-blue': '#4A90E2',
         'accent-purple': '#9B59B6',
+        'soft-slate': '#1c1c1c',
+        'mist': '#64748B',
+        'seafoam': '#0EA5E9',
       },
       fontFamily: {
         modern: ["var(--font-inter)", "system-ui", "sans-serif"], // Inter (Google)

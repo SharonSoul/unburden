@@ -81,7 +81,7 @@ export default function ResourcesPage() {
     : articles.filter(article => article.category === selectedCategory)
 
   return (
-    <div className="min-h-screen bg-[#000C18]">
+    <div className="min-h-screen bg-charcoal">
       <Header />
       
       <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
@@ -108,7 +108,7 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12"
           >
-            <div className="card border-[#b93900]/20 bg-gradient-to-r from-[#b93900]/5 to-[#b93900]/10">
+            <div className="card border-[#b93900]/20 bg-gradient-to-r from-[#b93900]/2 to-[#b93900]/6">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-[#b93900]/20 rounded-full flex items-center justify-center">
