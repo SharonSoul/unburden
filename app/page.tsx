@@ -93,12 +93,9 @@ export default function LandingPage() {
       <section className="section-full relative overflow-hidden">
         {/* Background Image (bottom layer) */}
         <div className="absolute inset-0 z-0">
-          <Image
+          <img
             src="/images/bg1.jpg"
             alt="Background"
-            fill
-            priority
-            quality={75}
             className="object-cover opacity-40"
             onError={(e) => {
               console.error('Background image failed to load');
@@ -188,13 +185,11 @@ export default function LandingPage() {
 
               {/* Main Hero Image with Custom Loader */}
               <div className="relative z-20 w-full max-w-2xl">
-                <Image
+                <img
                   src="/images/monk.png"
                   alt="Meditation figure representing peace and mindfulness"
                   width={800}
                   height={800}
-                  priority
-                  quality={90}
                   className="w-full h-auto vanish-text"
                   onLoad={() => console.log('✅ Hero image loaded successfully with custom loader')}
                   onError={(e) => {
