@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'Unburden',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/monk.png',
         width: 1200,
         height: 630,
         alt: 'Unburden - Peer Support for Addiction Recovery',

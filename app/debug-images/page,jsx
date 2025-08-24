@@ -1,0 +1,139 @@
+import Image from 'next/image'
+
+export default function DebugImages() {
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#000', color: '#fff' }}>
+      <h1>Image Debug Test</h1>
+      
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Direct Image URLs Test:</h2>
+        <p>Click these links to see if images are accessible:</p>
+        <ul>
+          <li>
+            <a 
+              href="/images/monk.png" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: '#00ff00' }}
+            >
+              /images/monk.png (should open the image)
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/images/bg1.jpg" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: '#00ff00' }}
+            >
+              /images/bg1.jpg (should open the image)
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Regular img Tags Test:</h2>
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <div>
+            <p>Monk Image (regular img):</p>
+            <img 
+              src="/images/monk.png" 
+              alt="Monk regular" 
+              style={{ 
+                width: '200px', 
+                height: 'auto', 
+                border: '2px solid #333',
+                backgroundColor: '#222'
+              }}
+              onLoad={(e) => {
+                console.log('✅ Regular img monk loaded');
+                e.target.style.border = '2px solid green';
+              }}
+              onError={(e) => {
+                console.error('❌ Regular img monk failed');
+                e.target.style.border = '2px solid red';
+                e.target.alt = 'FAILED: monk.png';
+              }}
+            />
+          </div>
+          
+          <div>
+            <p>Background Image (regular img):</p>
+            <img 
+              src="/images/bg1.jpg" 
+              alt="Background regular" 
+              style={{ 
+                width: '200px', 
+                height: 'auto', 
+                border: '2px solid #333',
+                backgroundColor: '#222'
+              }}
+              onLoad={(e) => {
+                console.log('✅ Regular img background loaded');
+                e.target.style.border = '2px solid green';
+              }}
+              onError={(e) => {
+                console.error('❌ Regular img background failed');
+                e.target.style.border = '2px solid red';
+                e.target.alt = 'FAILED: bg1.jpg';
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginBottom: '30px' }}>
+        <h2>Next.js Image Component Test:</h2>
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <div>
+            <p>Monk Image (Next.js Image):</p>
+            <div style={{ position: 'relative', width: '200px', height: '200px', border: '2px solid #333' }}>
+              <Image
+                src="/images/monk.png"
+                alt="Monk Next.js"
+                width={200}
+                height={200}
+                style={{ objectFit: 'contain' }}
+                onLoad={() => {
+                  console.log('✅ Next.js Image monk loaded');
+                }}
+                onError={(e) => {
+                  console.error('❌ Next.js Image monk failed');
+                }}
+              />
+            </div>
+          </div>
+          
+          <div>
+            <p>Background Image (Next.js Image):</p>
+            <div style={{ position: 'relative', width: '200px', height: '200px', border: '2px solid #333' }}>
+              <Image
+                src="/images/bg1.jpg"
+                alt="Background Next.js"
+                width={200}
+                height={200}
+                style={{ objectFit: 'cover' }}
+                onLoad={() => {
+                  console.log('✅ Next.js Image background loaded');
+                }}
+                onError={(e) => {
+                  console.error('❌ Next.js Image background failed');
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Console Output:</h2>
+        <p>Check browser console for detailed load results</p>
+        <p style={{ color: '#ffff00' }}>
+          GREEN border = loaded successfully<br/>
+          RED border = failed to load
+        </p>
+      </div>
+    </div>
+  )
+}

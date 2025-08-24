@@ -1,30 +1,21 @@
-// 1. CREATE: ImageLoader.js (in your project root directory)
-// This file should be at the same level as your package.json
-
-export default function ImageLoader({ src, width, quality }) {
-    // For local images (starting with /), serve them directly
-    if (src.startsWith('/')) {
+// ImageLoader.js
+const imageLoader = ({ src, width, quality }) => {
+    // For local images in the public folder, just return the src as-is
+    // This assumes your images are already optimized or you want to serve them directly
+    
+    // If the src already starts with a protocol (http/https), return as-is
+    if (src.startsWith('http://') || src.startsWith('https://')) {
       return src;
     }
     
-    // For external images, you can add custom logic
-    // For now, just return the src as-is
-    return src;
-  }
-  
-  // Alternative version if you want to serve from a CDN:
-  /*
-  export default function ImageLoader({ src, width, quality }) {
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://your-cdn.com' // Replace with your CDN URL
-      : '';
-      
-    // For local images, prepend base URL in production
-    if (src.startsWith('/')) {
-      return `${baseUrl}${src}`;
-    }
+    // For local images, ensure they start with a forward slash
+    const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
     
-    // For external images, return as-is
-    return src;
-  }
-  */
+    // You can add query parameters if needed for optimization
+    // return `${normalizedSrc}?w=${width}&q=${quality || 75}`;
+    
+    // For basic usage, just return the normalized src
+    return normalizedSrc;
+  };
+  
+  export default imageLoader;
