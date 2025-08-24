@@ -510,7 +510,7 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-light-grey/20 text-center">
-            <p className="text-off-white/60">© 2024 Unburden. This is peer support, not therapy or medical care.</p>
+            <p className="text-off-white/60">© 2025 Unburden. This is peer support, not therapy or medical care.</p>
           </div>
         </div>
       </footer>
