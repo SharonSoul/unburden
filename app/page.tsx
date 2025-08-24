@@ -93,15 +93,13 @@ export default function LandingPage() {
       <section className="section-full relative overflow-hidden">
         {/* Background Image (bottom layer) */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/bg1.jpg"
+          <Image
+            src="https://res.cloudinary.com/dk2e0vvpd/image/upload/v1755995721/bg1_j7xcet.jpg"
             alt="Background"
-            className="object-cover opacity-40"
-            onError={(e) => {
-              console.error('Background image failed to load');
-              e.currentTarget.style.display = 'none';
-
-            }}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-40 bg-black/60 bg-blend-overlay"
           />
           {/* Dark overlay to improve text contrast */}
           <div className="absolute inset-0 bg-black/30" />
@@ -185,35 +183,13 @@ export default function LandingPage() {
 
               {/* Main Hero Image with Custom Loader */}
               <div className="relative z-20 w-full max-w-2xl">
-                <img
-                  src="/images/monk.png"
-                  alt="Meditation figure representing peace and mindfulness"
-                  width={800}
-                  height={800}
-                  className="w-full h-auto vanish-text"
-                  onLoad={() => console.log('✅ Hero image loaded successfully with custom loader')}
-                  onError={(e) => {
-                    console.error('❌ Hero image failed to load with custom loader');
-
-                    // Hide the failed image and show fallback
-                    e.currentTarget.style.display = 'none';
-
-                    // Create a beautiful fallback
-                    const fallback = document.createElement('div');
-                    fallback.className = 'w-full aspect-square max-w-2xl bg-gradient-to-br from-[#b93900]/30 via-[#b93900]/20 to-transparent rounded-3xl flex items-center justify-center border border-[#b93900]/40 backdrop-blur-sm';
-                    fallback.innerHTML = `
-                <div class="text-center space-y-4 p-8">
-                  <div class="w-24 h-24 bg-[#b93900]/40 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-2xl font-bold text-white/90">Find Your Peace</h3>
-                  <p class="text-white/70 text-lg">A safe space for healing</p>
-                </div>
-              `;
-
-                  }}
+                <Image
+                  src="https://res.cloudinary.com/dk2e0vvpd/image/upload/v1755995725/monk_kipvm0.png"
+                  alt="Hero Illustration"
+                  width={2000}
+                  height={2000}
+                  priority
+                  className="relative z-20 w-[2000px] lg:w-[2000px] h-auto object-cover"
                 />
               </div>
             </motion.div>

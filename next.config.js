@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Completely remove custom image configuration for now
-  // We'll add it back once we confirm images are working
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/dk2e0vvpd/**', // ← replace
+      },
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
