@@ -6,7 +6,6 @@ import { Search, Filter, Users, Clock, Activity } from 'lucide-react'
 import Header from '@/components/Header'
 import CircleCard from '@/components/CircleCard'
 import { seedCircles } from '@/data/seedData'
-import { Circle } from '@/types'
 
 export default function CoveCirclesPage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -76,23 +75,37 @@ export default function CoveCirclesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#000C18]">
+    <div className="min-h-screen bg-midnight selection:bg-aura-gold selection:text-midnight">
       <Header />
       
-      <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
-        <div className="max-w-7xl mx-auto">
+      {/* Background Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="mesh-bg opacity-30" />
+        <div className="aura-glow bg-aura-gold -top-[10%] -left-[10%] w-[50vw] h-[50vw] opacity-10" />
+        <div className="aura-glow bg-aura-cyan bottom-[10%] -right-[10%] w-[40vw] h-[40vw] opacity-5" />
+      </div>
+
+      <div className="relative z-10 pt-32 pb-20 container-responsive">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mt-20 mb-8 sm:mb-12"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-16"
           >
-            <h1 className="text-4xl font-heroFont2 sm:text-5xl lg:text-6xl font-black text-white mb-6">
-              Cove Circles
-            </h1>
-            <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">
-              Find your supportive community. Browse topic-based spaces for addiction and recovery support.
+            <div className="space-y-4 mb-8">
+              <div className="inline-flex items-center space-x-2 text-aura-gold font-black tracking-widest text-[10px] uppercase">
+                <div className="w-8 h-[1px] bg-aura-gold/30" />
+                <span>COMMUNITY SPACES</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tight">
+                Explore <br />
+                <span className="text-gradient-gold">Support Coves.</span>
+              </h1>
+            </div>
+            <p className="text-xl text-white/40 max-w-2xl font-medium leading-relaxed">
+              Find your supportive community. These are safe, topic-based spaces designed for honest, judgment-free conversation through addiction and recovery.
             </p>
           </motion.div>
 
@@ -101,89 +114,98 @@ export default function CoveCirclesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 sm:mb-12"
+            className="mb-16 space-y-8"
           >
             {/* Search Bar */}
-            <div className="relative mb-6">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-off-white/50 w-5 h-5" />
+            <div className="glass-card flex items-center p-2 focus-within:border-aura-gold/50 transition-all duration-500">
+              <div className="pl-4 pr-2">
+                <Search className="text-white/20 w-5 h-5" />
+              </div>
               <input
                 type="text"
-                placeholder="Search circles by name or description..."
+                placeholder="Search by topic, keyword, or mood..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-dark-grey border border-light-grey/30 rounded-xl pl-12 pr-4 py-4 text-white placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-[#b93900]/50 focus:border-[#b93900] transition-all duration-300"
+                className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-white/20 py-4 text-lg font-medium"
               />
+              {searchQuery && (
+                <button 
+                  onClick={() => setSearchQuery('')}
+                  className="px-4 text-[10px] font-black tracking-widest text-white/20 uppercase hover:text-white transition-colors"
+                >
+                  Clear
+                </button>
+              )}
             </div>
 
-            {/* Filters */}
-            <div className="flex flex-wrap items-center gap-4">
-              {/* Active Only Toggle */}
-              <button
-                onClick={() => setShowActiveOnly(!showActiveOnly)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-all duration-300 ${
-                  showActiveOnly
-                    ? 'bg-[#b93900] border-[#b93900] text-white'
-                    : 'bg-dark-grey border-light-grey/30 text-off-white/80 hover:border-light-grey/50'
-                }`}
-              >
-                <Activity className="w-4 h-4" />
-                <span>Active now only</span>
-              </button>
-
-              {/* Tag Filters */}
-              <div className="flex flex-wrap gap-2">
-                {allTags.map(tag => (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      selectedTags.includes(tag)
-                        ? 'bg-[#b93900] text-white'
-                        : 'bg-dark-grey text-off-white/80 hover:bg-medium-grey hover:text-white border border-light-grey/30'
+            {/* Filter Controls */}
+            <div className="flex flex-wrap items-center gap-6">
+              <div className="flex items-center gap-3">
+                 <button
+                    onClick={() => setShowActiveOnly(!showActiveOnly)}
+                    className={`px-6 py-3 rounded-xl border font-black tracking-widest text-[10px] uppercase transition-all duration-500 flex items-center gap-2 ${
+                      showActiveOnly
+                        ? 'bg-aura-gold border-aura-gold text-midnight'
+                        : 'bg-white/5 border-white/10 text-white/40 hover:border-white/30'
                     }`}
                   >
-                    {tag}
+                    <Activity className="w-3 h-3" />
+                    <span>Live Only</span>
                   </button>
+              </div>
+
+              <div className="h-6 w-[1px] bg-white/10 hidden md:block" />
+
+              <div className="flex-1 flex flex-wrap gap-2">
+                {allTags.map(tag => (
+                   <button
+                     key={tag}
+                     onClick={() => toggleTag(tag)}
+                     className={`px-4 py-2 rounded-lg text-[10px] font-black tracking-widest uppercase border transition-all duration-500 ${
+                       selectedTags.includes(tag)
+                         ? 'bg-aura-cyan border-aura-cyan text-midnight'
+                         : 'bg-white/5 border-white/5 text-white/30 hover:border-white/20'
+                     }`}
+                   >
+                     {tag}
+                   </button>
                 ))}
               </div>
 
-              {/* Sort Dropdown */}
-              <div className="relative">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as 'name' | 'active' | 'mood')}
-                  className="appearance-none bg-dark-grey border border-light-grey/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#b93900]/50 focus:border-[#b93900] transition-all duration-300 pr-10"
-                >
-                  <option value="name">Sort by Name</option>
-                  <option value="active">Sort by Activity</option>
-                  <option value="mood">Sort by Mood</option>
-                </select>
-                <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-off-white/50 w-4 h-4 pointer-events-none" />
-              </div>
+              <div className="h-6 w-[1px] bg-white/10 hidden lg:block" />
 
-              {/* Clear Filters */}
-              {(searchQuery || selectedTags.length > 0 || showActiveOnly) && (
-                <button
-                  onClick={clearFilters}
-                  className="px-4 py-2 text-off-white/60 hover:text-white transition-colors text-sm"
-                >
-                  Clear Filters
-                </button>
-              )}
+              <div className="relative group">
+                 <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as 'name' | 'active' | 'mood')}
+                    className="appearance-none bg-white/5 border border-white/10 rounded-xl px-10 py-3 text-[10px] font-black tracking-widest uppercase text-white/40 focus:outline-none focus:border-aura-gold/50 cursor-pointer transition-all pr-12"
+                 >
+                    <option value="name">Alpha</option>
+                    <option value="active">Activity</option>
+                    <option value="mood">Vibe</option>
+                 </select>
+                 <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 text-white/20" />
+                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/20">
+                    <Clock className="w-3 h-3" />
+                 </div>
+              </div>
             </div>
           </motion.div>
 
           {/* Results Count */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-6"
-          >
-            <p className="text-off-white/60">
-              Showing {filteredCircles.length} of {seedCircles.length} circles
-            </p>
-          </motion.div>
+          <div className="flex items-center justify-between mb-8">
+             <p className="text-[10px] font-black tracking-[0.3em] uppercase text-white/20">
+               FOUND {filteredCircles.length} COVES
+             </p>
+             {(searchQuery || selectedTags.length > 0 || showActiveOnly) && (
+                <button
+                  onClick={clearFilters}
+                  className="text-[10px] font-black tracking-[0.3em] uppercase text-aura-gold hover:text-white transition-colors"
+                >
+                  Reset Filters
+                </button>
+              )}
+          </div>
 
           {/* Circles Grid */}
           <motion.div
@@ -209,14 +231,14 @@ export default function CoveCirclesPage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-12"
+              className="text-center py-32 glass-card-dark"
             >
-              <div className="w-16 h-16 bg-dark-grey rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="w-8 h-8 text-off-white/50" />
+              <div className="w-24 h-24 bg-white/5 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-white/5">
+                <Search className="w-10 h-10 text-white/20" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">No circles found</h3>
-              <p className="text-off-white/70 mb-6">
-                Try adjusting your search or filters to find what you're looking for.
+              <h3 className="text-4xl font-black text-white mb-4">No Coves Found</h3>
+              <p className="text-xl text-white/40 mb-10 max-w-sm mx-auto font-medium leading-relaxed">
+                We couldn't find any circles matching your current filters.
               </p>
               <button
                 onClick={clearFilters}

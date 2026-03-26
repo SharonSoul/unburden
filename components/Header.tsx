@@ -60,79 +60,76 @@ export default function Header() {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-40 glass-effect border-b border-light-grey/20"
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-4 left-4 right-4 z-50 transition-all duration-300"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
-          <div className="flex items-center justify-between h-20">
+        <div className="section-container">
+          <div className="glass-card-dark px-6 sm:px-8 py-3 flex items-center justify-between border border-white/5 shadow-2xl">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3 group">
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-gradient-to-br from-[#b93900] to-[#fd8600] rounded-xl flex items-center justify-center shadow-glow"
+                className="w-10 h-10 bg-gradient-to-br from-aura-gold to-amber-500 rounded-xl flex items-center justify-center shadow-glow-gold relative overflow-hidden"
               >
-                <Heart className="w-6 h-6 text-white" />
+                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Heart className="w-6 h-6 text-midnight" fill="currentColor" />
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-sm font-bold text-white">Unburden</span>
-                <div className="w-8 h-1 bg-[#b93900] rounded-full"></div>
+                <span className="text-xl font-black tracking-tight text-white group-hover:text-gradient-gold transition-all duration-300">
+                  unburden
+                </span>
+                <div className="w-0 group-hover:w-full h-0.5 bg-aura-gold rounded-full transition-all duration-500"></div>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link 
-                href="/coves" 
-                className="text-off-white/80 hover:text-white transition-colors flex items-center space-x-2 group"
-              >
-                <Users className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
-                <span>Cove Circles</span>
-              </Link>
-              <Link 
-                href="/journal" 
-                className="text-off-white/80 hover:text-white transition-colors flex items-center space-x-2 group"
-              >
-                <BookOpen className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
-                <span>Journal</span>
-              </Link>
-              <Link 
-                href="/resources" 
-                className="text-off-white/80 hover:text-white transition-colors flex items-center space-x-2 group"
-              >
-                <Shield className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
-                <span>Resources</span>
-              </Link>
+            <nav className="hidden md:flex items-center space-x-10">
+              {[
+                { name: 'Cove Circles', href: '/coves', icon: Users },
+                { name: 'Journal', href: '/journal', icon: BookOpen },
+                { name: 'Resources', href: '/resources', icon: Shield },
+              ].map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-white/70 hover:text-white transition-all duration-300 flex items-center space-x-2.5 font-medium group text-[15px]"
+                >
+                  <link.icon className="w-4 h-4 text-white/40 group-hover:text-aura-gold transition-colors duration-300" />
+                  <span className="relative">
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-aura-gold transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </Link>
+              ))}
             </nav>
 
-            {/* Action Buttons */}
-            <div className="flex items-center space-x-3 sm:space-x-4">
+            <div className="flex items-center space-x-4">
               {/* Crisis Button */}
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCrisisHelp}
-                className="bg-[#b93900] hover:bg-[#fd8600] text-white px-4 sm:px-6 py-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center space-x-2 shadow-glow hover:shadow-glow"
+                className="btn-primary py-2.5 px-6 !text-sm whitespace-nowrap"
               >
-                <HelpCircle className="w-4 h-4 flex-shrink-0" />
-                <span className="hidden sm:inline whitespace-nowrap">Crisis Help</span>
+                <HelpCircle className="w-4 h-4" />
+                <span className="hidden sm:inline">Crisis Help</span>
               </motion.button>
 
               {/* Quick Hide */}
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                whileTap={{ scale: 0.9 }}
                 onClick={handleQuickHide}
-                className="bg-dark-grey hover:bg-medium-grey text-white px-3 py-3 rounded-lg text-sm font-medium transition-colors border border-light-grey/30 hover:border-light-grey/50 flex items-center justify-center"
-                title="Press H anytime"
+                className="btn-glass p-2.5"
+                title="Quick Hide (Esc)"
               >
-                <Eye className="w-4 h-4" />
+                <EyeOff className="w-4 h-4 text-white/70" />
               </motion.button>
 
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-white hover:text-[#b93900] transition-colors"
+                className="md:hidden p-2 text-white hover:text-aura-cyan transition-colors"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -188,38 +185,43 @@ export default function Header() {
             onClick={() => setShowCrisisModal(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-dark-grey rounded-xl p-8 max-w-md w-full border border-light-grey/20"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="glass-card-dark p-8 sm:p-10 max-w-md w-full border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-[#b93900]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <HelpCircle className="w-10 h-10 text-[#b93900]" />
-                </div>
-                <h2 className="text-2xl font-bold text-white mb-3">I'm sorry you're going through this</h2>
-                <p className="text-off-white/70">You deserve immediate support.</p>
+                <motion.div 
+                  animate={{ scale: [1, 1.1, 1] }} 
+                  transition={{ repeat: Infinity, duration: 2 }}
+                  className="w-20 h-20 bg-aura-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 relative"
+                >
+                  <div className="absolute inset-0 bg-aura-gold rounded-full animate-ping opacity-20" />
+                  <HelpCircle className="w-10 h-10 text-aura-gold" />
+                </motion.div>
+                <h2 className="text-2xl font-bold text-white mb-3">You're not alone.</h2>
+                <p className="text-white/60">Immediate support is available for you 24/7.</p>
               </div>
 
               <div className="space-y-4 mb-8">
-                <button className="w-full bg-[#b93900] hover:bg-[#fd8600] text-white py-4 rounded-lg font-semibold transition-colors flex items-center justify-center shadow-glow">
-                  Show help options
+                <button className="btn-primary w-full py-4 text-lg">
+                  Get Immediate Help
                 </button>
-                <button className="w-full bg-dark-grey hover:bg-medium-grey text-white py-4 rounded-lg font-medium transition-colors border border-light-grey/30 flex items-center justify-center">
-                  Keep writing privately
+                <button className="btn-secondary w-full py-4">
+                  Talk to a Peer Moderator
                 </button>
-                <button className="w-full bg-dark-grey hover:bg-medium-grey text-white py-4 rounded-lg font-medium transition-colors border border-light-grey/30 flex items-center justify-center">
-                  Talk to a moderator
+                <button className="btn-glass w-full py-4 text-white/50 hover:text-white">
+                  Continue Writing Separately
                 </button>
               </div>
 
               <div className="text-center">
                 <button
                   onClick={() => setShowCrisisModal(false)}
-                  className="text-off-white/60 hover:text-white transition-colors text-sm"
+                  className="text-white/40 hover:text-white transition-colors text-sm font-medium underline-offset-4 hover:underline"
                 >
-                  Close
+                  Keep Browsing
                 </button>
               </div>
             </motion.div>

@@ -8,34 +8,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Modern futuristic color palette
-        'charcoal': '#000C18',
-        'navy': '#000C18',
-        'dark-grey': '#19242f',
-        'medium-grey': '#3A3A3A',
-        'light-grey': '#4A4A4A',
+        // "Midnight & Aura" Color Palette
+        'midnight': '#020617',    // Deepest Indigo
+        'slate-950': '#0f172a',  // Dark Slate
+        'slate-900': '#0f172a',
+        'aura-gold': '#fbbf24',  // Vibrant Gold
+        'aura-cyan': '#22d3ee',  // Electric Cyan
+        'aura-purple': '#a855f7', // Mystic Purple
         'white': '#FFFFFF',
-        'off-white': '#F5F5F5',
-        'orange': '#b93900',
-        'orange-light': '#fd8600',
-        'orange-dark': '#523a1e',
-        'accent-blue': '#4A90E2',
-        'accent-purple': '#9B59B6',
-        'soft-slate': '#1c1c1c',
-        'mist': '#64748B',
-        'seafoam': '#0EA5E9',
+        'off-white': '#F8FAFC',
+        'glass-white': 'rgba(255, 255, 255, 0.05)',
+        'glass-dark': 'rgba(0, 0, 0, 0.3)',
       },
       fontFamily: {
-        modern: ["var(--font-inter)", "system-ui", "sans-serif"], // Inter (Google)
-        heroFont: ["var(--font-heroFont)", "system-ui", "sans-serif"], // HeroFont
-        heroFont2: ["var(--font-heroFont2)", "system-ui", "sans-serif"], // HeroFont2
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        modern: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-heroFont)", "system-ui", "sans-serif"],
       },
-
       borderRadius: {
-        'sm': '8px',
-        'md': '16px',
-        'lg': '24px',
-        'xl': '32px',
+        'sm': '12px',
+        'md': '20px',
+        'lg': '28px',
+        'xl': '36px',
+        '2xl': '48px',
+        '3xl': '64px',
       },
       spacing: {
         'xs': '4px',
@@ -45,18 +41,21 @@ module.exports = {
         'xl': '32px',
         '2xl': '48px',
         '3xl': '64px',
+        '4xl': '96px',
       },
       boxShadow: {
-        'card': '0 8px 24px rgba(0,0,0,0.12)',
-        'glow': '0 0 20px rgba(255, 107, 53, 0.3)',
-        'glow-blue': '0 0 20px rgba(74, 144, 226, 0.3)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'glow-gold': '0 0 20px rgba(251, 191, 36, 0.4)',
+        'glow-cyan': '0 0 20px rgba(34, 211, 238, 0.3)',
+        'glow-purple': '0 0 25px rgba(168, 85, 247, 0.2)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.6s ease-out',
-        'scale-in': 'scaleIn 0.3s ease-out',
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in': 'fadeIn 0.7s ease-out',
+        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+        'scale-in': 'scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        'float': 'float 8s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -64,29 +63,23 @@ module.exports = {
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '0%': { transform: 'translateY(30px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         scaleIn: {
-          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-30px) rotate(2deg)' },
         },
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        // Add your custom background images here
-        'bg1': "url('/images/bg1.jpg')",
-        'monk': "url('/images/monk.png')",
-        // You can also add variations with different opacities or overlays
-        'hero-bg-dark': "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/bg1.jpg')",
-        'hero-bg-overlay': "linear-gradient(135deg, rgba(185, 57, 0, 0.1) 0%, rgba(0, 12, 24, 0.8) 100%), url('/images/bg1.jpg')",
+        'mesh-gradient': 'radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)',
+        'hero-aura': 'radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 70%)',
       },
     },
   },
   plugins: [],
-}
+}

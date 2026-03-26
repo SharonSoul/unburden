@@ -17,108 +17,90 @@ export default function CircleCard({ circle }: CircleCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
       transition={{ 
         duration: 0.5, 
-        ease: "easeOut"
+        ease: [0.16, 1, 0.3, 1]
       }}
       whileHover={{ 
-        y: -4,
-        transition: { duration: 0.2 }
+        y: -10,
+        transition: { duration: 0.3 }
       }}
-      className="group"
+      className="group relative h-full"
     >
       <Link href={`/coves/${circle.slug}`}>
-        <div className="card card-hover h-full cursor-pointer">
+        <div className="glass-card h-full p-8 flex flex-col transition-all duration-500 hover:border-aura-gold/30 hover:shadow-glow-gold/20 relative overflow-hidden">
+          {/* Subtle Aura Glow behind card */}
+          <div className="aura-glow bg-aura-gold/5 -top-10 -right-10 w-40 h-40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
+          <div className="flex items-start justify-between mb-6">
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#b93900] transition-colors">
+              <h3 className="text-xl font-black text-white group-hover:text-aura-gold transition-colors duration-300 leading-tight">
                 {circle.name}
               </h3>
-              <p className="text-off-white/80 text-sm leading-relaxed">
-                {circle.description}
-              </p>
             </div>
             
             {/* Live Indicator */}
             {circle.isLive && (
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center space-x-1 bg-[#b93900]/20 text-[#b93900] px-3 py-1 rounded-full text-xs font-semibold border border-[#b93900]/30"
+                animate={{ boxShadow: ['0 0 0px rgba(251, 191, 36, 0)', '0 0 10px rgba(251, 191, 36, 0.4)', '0 0 0px rgba(251, 191, 36, 0)'] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="flex items-center space-x-1.5 bg-aura-gold text-midnight px-3 py-1 rounded-full text-[10px] font-black tracking-widest border border-white/20"
               >
-                <div className="w-2 h-2 bg-[#b93900] rounded-full animate-pulse mr-1"></div>
+                <div className="w-1.5 h-1.5 bg-midnight rounded-full animate-pulse"></div>
                 <span>LIVE</span>
               </motion.div>
             )}
           </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {circle.tags.slice(0, 3).map((tag, tagIndex) => (
-              <motion.span
-                key={tag}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 + tagIndex * 0.1 }}
-                className="bg-dark-grey text-off-white/70 px-2 py-1 rounded-lg text-xs font-medium border border-light-grey/30"
-              >
-                {tag}
-              </motion.span>
-            ))}
-            {circle.tags.length > 3 && (
-              <span className="text-off-white/50 text-xs px-2 py-1">
-                +{circle.tags.length - 3} more
-              </span>
-            )}
-          </div>
+          <p className="text-white/60 text-sm leading-relaxed mb-6 flex-grow">
+            {circle.description}
+          </p>
 
           {/* Stats Row */}
-          <div className="flex items-center justify-between text-sm mb-4">
+          <div className="flex items-center justify-between text-xs font-bold tracking-wider text-white/40 mb-6 py-4 border-t border-b border-white/5">
             <div className="flex items-center space-x-2">
-              <Users className="w-4 h-4 text-off-white/60" />
-              <span className="text-off-white/80">{circle.activeCount} active</span>
+              <Users className="w-3.5 h-3.5 text-aura-gold" />
+              <span>{(circle.activeCount || 0).toLocaleString()} MEMBERS</span>
             </div>
             
-            <div className="flex items-center space-x-1">
-              <span className="text-[#b93900] font-medium">{circle.mood}</span>
+            <div className="flex items-center space-x-2">
+              <Activity className="w-3.5 h-3.5 text-aura-cyan" />
+              <span className="text-aura-gold">{(circle.mood || 'CALM').toUpperCase()}</span>
             </div>
           </div>
 
           {/* Next Session */}
           {nextSession && (
-            <div className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-3 mb-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-off-white/60" />
-                  <div>
-                    <p className="text-xs text-off-white/50 uppercase tracking-wide">
-                      Next {nextSession.type} session
-                    </p>
-                    <p className="text-sm text-white font-medium">
-                      {getDayOfWeek(nextSession.dow[0])} at {formatTime(nextSession.time)}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="text-xs text-off-white/50 bg-dark-grey px-2 py-1 rounded">
-                  {nextSession.type}
-                </div>
-              </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 group-hover:bg-white/10 transition-colors duration-300">
+               <div className="flex items-center space-x-3">
+                 <div className="w-10 h-10 rounded-xl bg-midnight flex items-center justify-center border border-white/5">
+                   <Clock className="w-5 h-5 text-aura-gold" />
+                 </div>
+                 <div>
+                   <p className="text-[10px] font-black text-white/30 tracking-widest uppercase">Next {nextSession.type} Session</p>
+                   <p className="text-sm text-white font-bold">
+                     {getDayOfWeek(nextSession.dow[0])} @ {formatTime(nextSession.time)}
+                   </p>
+                 </div>
+               </div>
             </div>
           )}
 
-          {/* Peak Hours */}
-          <div className="pt-4 border-t border-light-grey/20">
-            <div className="flex items-center space-x-2 text-xs text-off-white/50">
-              <Clock className="w-3 h-3" />
-              <span>Peak: {circle.peakHours.join(', ')}</span>
+          {/* Footer - Peak Hours */}
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-[10px] font-bold text-white/20 tracking-widest">
+              <Tag className="w-3 h-3" />
+              <span>PEAK: {circle.peakHours.join(', ')}</span>
             </div>
+            <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-aura-gold group-hover:translate-x-1 transition-all duration-300" />
           </div>
         </div>
       </Link>
     </motion.div>
+
   )
 }

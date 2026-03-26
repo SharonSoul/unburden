@@ -13,7 +13,8 @@ import {
   Clock,
   ExternalLink,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  X
 } from 'lucide-react'
 import Header from '@/components/Header'
 import { crisisResources } from '@/data/seedData'
@@ -81,23 +82,37 @@ export default function ResourcesPage() {
     : articles.filter(article => article.category === selectedCategory)
 
   return (
-    <div className="min-h-screen bg-charcoal">
+    <div className="min-h-screen bg-midnight selection:bg-aura-gold selection:text-midnight">
       <Header />
       
-      <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 container-responsive">
-        <div className="max-w-7xl mx-auto">
+      {/* Background Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="mesh-bg opacity-30" />
+        <div className="aura-glow bg-aura-gold -top-[10%] -left-[10%] w-[50vw] h-[50vw] opacity-10" />
+        <div className="aura-glow bg-aura-cyan bottom-[10%] -right-[10%] w-[40vw] h-[40vw] opacity-5" />
+      </div>
+
+      <div className="relative z-10 pt-32 pb-20 container-responsive">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mt-20 mb-12 sm:mb-16"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-16"
           >
-            <h1 className="text-4xl sm:text-5xl font-heroFont2 lg:text-6xl font-black text-white mb-6">
-              Resources & Support
-            </h1>
-            <p className="text-xl lg:text-2xl text-off-white/80 max-w-3xl mx-auto leading-relaxed">
-              Crisis support, educational articles, and helpful resources for your recovery journey
+            <div className="space-y-4 mb-8">
+              <div className="inline-flex items-center space-x-2 text-aura-gold font-black tracking-widest text-[10px] uppercase">
+                <div className="w-8 h-[1px] bg-aura-gold/30" />
+                <span>SAFE HARBOR</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tight">
+                Support & <br />
+                <span className="text-gradient-gold">Resources.</span>
+              </h1>
+            </div>
+            <p className="text-xl text-white/40 max-w-2xl font-medium leading-relaxed">
+               Immediate crisis help, educational guidance, and community standards to keep our space safe for everyone.
             </p>
           </motion.div>
 
@@ -106,71 +121,73 @@ export default function ResourcesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12"
+            className="mb-16"
           >
-            <div className="card border-[#b93900]/20 bg-gradient-to-r from-[#b93900]/2 to-[#b93900]/6">
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#b93900]/20 rounded-full flex items-center justify-center">
-                    <AlertTriangle className="w-6 h-6 text-[#b93900]" />
+            <div className="glass-card-dark p-12 border-aura-gold/20 relative overflow-hidden group">
+               <div className="aura-glow bg-aura-gold/10 -top-20 -right-20 w-80 h-80 opacity-20" />
+               
+               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                  <div className="space-y-8">
+                     <div className="w-16 h-16 bg-aura-gold/10 rounded-2xl flex items-center justify-center text-aura-gold">
+                        <AlertTriangle className="w-8 h-8" />
+                     </div>
+                     <div>
+                        <h2 className="text-5xl font-black text-white leading-tight mb-4">Urgent Help.</h2>
+                        <p className="text-xl text-white/40 font-medium max-w-md">Peer support is powerful, but not a substitute for crisis care. Access 24/7 professional help immediately.</p>
+                     </div>
+                     
+                     <div className="flex flex-wrap gap-4">
+                        <button className="btn-primary px-10">
+                           <Phone className="w-5 h-5" />
+                           <span>Call Crisis Line</span>
+                        </button>
+                     </div>
                   </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-white">Get Urgent Help</h2>
-                    <p className="text-off-white/80">Immediate support when you need it most</p>
-                  </div>
-                </div>
-                
-                <button className="btn-primary">
-                  <Phone className="w-4 h-4" />
-                  <span>Crisis Help</span>
-                </button>
-              </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Region Selector */}
-                <div>
-                  <h3 className="text-lg font-medium text-white mb-3">Select Your Region</h3>
-                  <select
-                    value={selectedRegion}
-                    onChange={(e) => setSelectedRegion(e.target.value)}
-                    className="input-field w-full"
-                  >
-                    {crisisResources.map(resource => (
-                      <option key={resource.region} value={resource.region}>
-                        {resource.region}
-                      </option>
+                  <div className="space-y-8 p-8 bg-white/[0.02] border border-white/5 rounded-3xl">
+                     <div className="space-y-3">
+                        <label className="text-[10px] font-black tracking-widest uppercase text-white/20 ml-1">Location Details</label>
+                        <select
+                          value={selectedRegion}
+                          onChange={(e) => setSelectedRegion(e.target.value)}
+                          className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-white placeholder-white/20 focus:outline-none focus:border-aura-gold/50 transition-all font-bold"
+                        >
+                          {crisisResources.map(resource => (
+                            <option key={resource.region} value={resource.region} className="bg-midnight">
+                              {resource.region}
+                            </option>
+                          ))}
+                        </select>
+                     </div>
+
+                     <div className="p-6 bg-aura-gold/5 border border-aura-gold/10 rounded-2xl">
+                        <p className="text-sm text-aura-gold/80 font-medium leading-relaxed">
+                           {currentResources.disclaimer}
+                        </p>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Hotlines */}
+               <div className="relative z-10 mt-12 pt-12 border-t border-white/5">
+                  <h3 className="text-[10px] font-black tracking-widest uppercase text-white/20 mb-6">Verified 24/7 Hotlines</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {currentResources.hotlines.map((hotline: string, index: number) => (
+                      <motion.div
+                        key={hotline}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 + index * 0.1 }}
+                        className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:border-aura-gold/30 transition-all duration-500 group"
+                      >
+                        <div className="flex items-center justify-between">
+                           <span className="font-bold text-white text-lg">{hotline}</span>
+                           <Phone className="w-4 h-4 text-white/20 group-hover:text-aura-gold transition-colors" />
+                        </div>
+                      </motion.div>
                     ))}
-                  </select>
-                </div>
-
-                {/* Disclaimer */}
-                <div className="bg-dark-grey/50 rounded-lg p-4 border border-light-grey/20">
-                  <p className="text-sm text-off-white/80 leading-relaxed">
-                    {currentResources.disclaimer}
-                  </p>
-                </div>
-              </div>
-
-              {/* Hotlines */}
-              <div className="mt-6">
-                <h3 className="text-lg font-medium text-white mb-3">24/7 Crisis Hotlines</h3>
-                <div className="grid md:grid-cols-2 gap-3">
-                  {currentResources.hotlines.map((hotline: string, index: number) => (
-                    <motion.div
-                      key={hotline}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
-                      className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4 hover:bg-dark-grey/70 transition-colors"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <Phone className="w-5 h-5 text-[#b93900]" />
-                        <span className="font-medium text-white">{hotline}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+                  </div>
+               </div>
             </div>
           </motion.div>
 
@@ -179,17 +196,22 @@ export default function ResourcesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-12"
+            className="mb-16"
           >
-            <div className="card">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-3">
-                  <BookOpen className="w-8 h-8 text-[#b93900]" />
-                  <h2 className="text-2xl font-bold text-white">Educational Articles</h2>
+            <div className="glass-card p-10">
+              <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-aura-gold/10 rounded-2xl flex items-center justify-center text-aura-gold">
+                    <BookOpen className="w-7 h-7" />
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-black text-white tracking-tight">Guidance.</h2>
+                    <p className="text-white/40 font-medium">Expert insights and community stories.</p>
+                  </div>
                 </div>
                 <button
                   onClick={() => toggleSection('articles')}
-                  className="text-off-white/60 hover:text-white transition-colors"
+                  className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/20 hover:text-white transition-colors"
                 >
                   {expandedSections.has('articles') ? (
                     <ChevronUp className="w-6 h-6" />
@@ -204,7 +226,7 @@ export default function ResourcesPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="space-y-6"
+                  className="space-y-10"
                 >
                   {/* Category Filter */}
                   <div className="flex flex-wrap gap-2">
@@ -212,10 +234,10 @@ export default function ResourcesPage() {
                       <button
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                        className={`px-6 py-3 rounded-xl text-[10px] font-black tracking-widest uppercase border transition-all duration-500 ${
                           selectedCategory === category
-                            ? 'bg-[#b93900] text-white'
-                            : 'bg-dark-grey text-off-white/80 hover:bg-medium-grey hover:text-white border border-light-grey/30'
+                            ? 'bg-aura-gold border-aura-gold text-midnight'
+                            : 'bg-white/5 border-white/5 text-white/30 hover:border-white/20'
                         }`}
                       >
                         {category}
@@ -224,35 +246,37 @@ export default function ResourcesPage() {
                   </div>
 
                   {/* Articles Grid */}
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredArticles.map((article, index) => (
                       <motion.div
                         key={article.title}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 }}
-                        className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4 hover:bg-dark-grey/70 hover:border-light-grey/30 transition-all cursor-pointer group"
+                        className="bg-white/5 border border-white/5 rounded-3xl p-8 hover:bg-white/[0.08] hover:border-aura-gold/30 transition-all duration-500 cursor-pointer group flex flex-col justify-between"
                       >
-                        <div className="mb-3">
-                          <span className="text-xs text-[#b93900] bg-[#b93900]/20 px-2 py-1 rounded-full">
-                            {article.category}
-                          </span>
+                        <div>
+                           <div className="mb-6">
+                             <span className="text-[10px] font-black text-aura-gold tracking-widest uppercase bg-aura-gold/10 px-3 py-1.5 rounded-lg">
+                               {article.category}
+                             </span>
+                           </div>
+                           
+                           <h3 className="text-2xl font-black text-white mb-4 group-hover:text-aura-gold transition-colors leading-tight">
+                             {article.title}
+                           </h3>
+                           
+                           <p className="text-white/40 font-medium mb-8 leading-relaxed">
+                             {article.description}
+                           </p>
                         </div>
                         
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#b93900] transition-colors">
-                          {article.title}
-                        </h3>
-                        
-                        <p className="text-off-white/80 text-sm mb-4 leading-relaxed">
-                          {article.description}
-                        </p>
-                        
-                        <div className="flex items-center justify-between text-sm text-off-white/50">
-                          <span className="flex items-center space-x-1">
+                        <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                          <span className="flex items-center space-x-2 text-[10px] font-black tracking-widest uppercase text-white/20">
                             <Clock className="w-3 h-3" />
                             <span>{article.readTime}</span>
                           </span>
-                          <ExternalLink className="w-4 h-4 group-hover:text-[#b93900] transition-colors" />
+                          <ExternalLink className="w-4 h-4 text-white/20 group-hover:text-aura-gold transition-colors" />
                         </div>
                       </motion.div>
                     ))}
@@ -267,17 +291,22 @@ export default function ResourcesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-12"
+            className="mb-16"
           >
-            <div className="card">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-3">
-                  <Users className="w-8 h-8 text-[#b93900]" />
-                  <h2 className="text-2xl font-bold text-white">Community Guidelines</h2>
+            <div className="glass-card p-10">
+              <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-aura-gold/10 rounded-2xl flex items-center justify-center text-aura-gold">
+                    <Users className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-black text-white tracking-tight">Safeguards.</h2>
+                    <p className="text-white/40 font-medium">Protecting our mutual peace.</p>
+                  </div>
                 </div>
                 <button
                   onClick={() => toggleSection('guidelines')}
-                  className="text-off-white/60 hover:text-white transition-colors"
+                  className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/20 hover:text-white transition-colors"
                 >
                   {expandedSections.has('guidelines') ? (
                     <ChevronUp className="w-6 h-6" />
@@ -292,49 +321,43 @@ export default function ResourcesPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="grid md:grid-cols-2 gap-6"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
-                  <div>
-                    <h3 className="text-lg font-medium text-white mb-3">What We Do</h3>
-                    <ul className="space-y-2 text-off-white/80">
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Provide peer support and understanding</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Share personal experiences and stories</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Offer encouragement and hope</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Create a safe, judgment-free space</span>
-                      </li>
+                  <div className="p-8 bg-white/5 border border-white/5 rounded-3xl">
+                    <h3 className="text-[10px] font-black tracking-widest uppercase text-aura-gold mb-6">What We Do</h3>
+                    <ul className="space-y-4">
+                      {[
+                        "Provide peer support and understanding",
+                        "Share personal experiences and stories",
+                        "Offer encouragement and hope",
+                        "Create a safe, judgment-free space"
+                      ].map((item, i) => (
+                         <li key={i} className="flex items-start space-x-4">
+                            <div className="w-5 h-5 bg-aura-gold/10 rounded-full flex items-center justify-center text-aura-gold shrink-0 mt-0.5">
+                               <Heart className="w-2.5 h-2.5 fill-aura-gold" />
+                            </div>
+                            <span className="text-lg text-white/60 font-medium leading-relaxed">{item}</span>
+                         </li>
+                      ))}
                     </ul>
                   </div>
                   
-                  <div>
-                    <h3 className="text-lg font-medium text-white mb-3">What We Don't Do</h3>
-                    <ul className="space-y-2 text-off-white/80">
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Give medical or clinical advice</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Diagnose or treat conditions</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Enable harmful behaviors</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#b93900] rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Judge or shame others</span>
-                      </li>
+                  <div className="p-8 bg-white/5 border border-white/5 rounded-3xl">
+                    <h3 className="text-[10px] font-black tracking-widest uppercase text-red-400 mb-6">What We Don't Do</h3>
+                    <ul className="space-y-4">
+                      {[
+                        "Give medical or clinical advice",
+                        "Diagnose or treat conditions",
+                        "Enable harmful behaviors",
+                        "Judge or shame others"
+                      ].map((item, i) => (
+                         <li key={i} className="flex items-start space-x-4">
+                            <div className="w-5 h-5 bg-red-400/10 rounded-full flex items-center justify-center text-red-400 shrink-0 mt-0.5">
+                               <X className="w-2.5 h-2.5" />
+                            </div>
+                            <span className="text-lg text-white/60 font-medium leading-relaxed">{item}</span>
+                         </li>
+                      ))}
                     </ul>
                   </div>
                 </motion.div>
@@ -348,15 +371,20 @@ export default function ResourcesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className="card">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-3">
-                  <Heart className="w-8 h-8 text-[#b93900]" />
-                  <h2 className="text-2xl font-bold text-white">Additional Support</h2>
+            <div className="glass-card p-10">
+              <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-aura-gold/10 rounded-2xl flex items-center justify-center text-aura-gold">
+                    <Heart className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-black text-white tracking-tight">Expansion.</h2>
+                    <p className="text-white/40 font-medium">Beyond the screen.</p>
+                  </div>
                 </div>
                 <button
                   onClick={() => toggleSection('support')}
-                  className="text-off-white/60 hover:text-white transition-colors"
+                  className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/20 hover:text-white transition-colors"
                 >
                   {expandedSections.has('support') ? (
                     <ChevronUp className="w-6 h-6" />
@@ -371,31 +399,45 @@ export default function ResourcesPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="grid md:grid-cols-2 gap-6"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
-                  <div className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4">
-                    <h3 className="text-lg font-medium text-white mb-3">Professional Help</h3>
-                    <p className="text-off-white/80 text-sm mb-4">
+                  <div className="bg-white/5 border border-white/5 rounded-3xl p-8">
+                    <h3 className="text-[10px] font-black tracking-widest uppercase text-white/20 mb-6">Professional Help</h3>
+                    <p className="text-lg text-white/40 font-medium mb-8 leading-relaxed">
                       While we provide peer support, professional help is often essential for recovery.
                     </p>
-                    <ul className="space-y-2 text-sm text-off-white/80">
-                      <li>• Licensed therapists and counselors</li>
-                      <li>• Addiction specialists</li>
-                      <li>• Support groups (AA, NA, SMART Recovery)</li>
-                      <li>• Medical professionals</li>
+                    <ul className="space-y-4">
+                      {[
+                        "Licensed therapists and counselors",
+                        "Addiction specialists",
+                        "Support groups (AA, NA, SMART Recovery)",
+                        "Medical professionals"
+                      ].map((item, i) => (
+                         <li key={i} className="flex items-center space-x-4 text-white/60 font-bold">
+                            <div className="w-1.5 h-1.5 bg-aura-gold rounded-full" />
+                            <span>{item}</span>
+                         </li>
+                      ))}
                     </ul>
                   </div>
                   
-                  <div className="bg-dark-grey/50 border border-light-grey/20 rounded-lg p-4">
-                    <h3 className="text-lg font-medium text-white mb-3">Self-Care Resources</h3>
-                    <p className="text-off-white/80 text-sm mb-4">
+                  <div className="bg-white/5 border border-white/5 rounded-3xl p-8">
+                    <h3 className="text-[10px] font-black tracking-widest uppercase text-white/20 mb-6">Self-Care Resources</h3>
+                    <p className="text-lg text-white/40 font-medium mb-8 leading-relaxed">
                       Tools and practices to support your mental and emotional well-being.
                     </p>
-                    <ul className="space-y-2 text-sm text-off-white/80">
-                      <li>• Meditation and mindfulness apps</li>
-                      <li>• Exercise and movement resources</li>
-                      <li>• Creative expression outlets</li>
-                      <li>• Sleep and nutrition guidance</li>
+                    <ul className="space-y-4">
+                      {[
+                        "Meditation and mindfulness apps",
+                        "Exercise and movement resources",
+                        "Creative expression outlets",
+                        "Sleep and nutrition guidance"
+                      ].map((item, i) => (
+                         <li key={i} className="flex items-center space-x-4 text-white/60 font-bold">
+                            <div className="w-1.5 h-1.5 bg-aura-cyan rounded-full" />
+                            <span>{item}</span>
+                         </li>
+                      ))}
                     </ul>
                   </div>
                 </motion.div>
